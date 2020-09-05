@@ -19,25 +19,25 @@
 	            	<thead>
 	            		<tr>
 	            			<th>No</th>
-	            			<th style="width: 100px">Photo</th>
+	            			<th>Code</th>
+	            			<th style="width: 100px">Image</th>
 	            			<th>Name</th>
-	            			<th>Email</th>
-	            			<th>Role</th>
+	            			<th>Stock</th>
 	            			<th>Action</th>
 	            		</tr>
 	            	</thead>
 	            	<tbody>
 	            		<?php $no=1; ?>
-	            		@foreach($users as $user)
+	            		@foreach($drugs as $drug)
 
 	            			<tr>
 	            				<td>{{ $no++ }}</td>
+	            				<td>{{ $drug->drug_code }}</td>
 	            				<td>
 	            					<div style="width: 100px;height: 100px;border-radius: 50px;background-color: gray;"></div>
 	            				</td>
-	            				<td>{{ $user->name }}</td>
-	            				<td>{{ $user->email }}</td>
-	            				<td>{{ $user->role }}</td>
+	            				<td>{{ $drug->name }}</td>
+	            				<td>{{ $drug->stock }}</td>
 	            				<td>
 	            					<i class="fa fa-trash"></i>
 	            				</td>

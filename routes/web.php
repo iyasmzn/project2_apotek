@@ -14,11 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 // Route::get('/admin', function () {
 //     return view('admin.index');
 // });
+Route::get('/login', 'AuthController@login')->name('login');
+Route::get('/register', 'AuthController@register')->name('register');
+
 Route::prefix('/admin')->name('admin.')->group(function ()
 {
 	Route::get('/', 'AdminController@index')->name('home');

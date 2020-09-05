@@ -1,6 +1,6 @@
 <section class="title-bar">
             <div class="logo">
-                <h1><a href="index.html"><img src="images/logo.png" alt="" />Colored</a></h1>
+                <h1><a href="index.html"><img src="/colored/images/logo.png" alt="" />TEOKAP</a></h1>
             </div>
             <div class="full-screen">
                 <section class="full-top">
@@ -27,7 +27,7 @@
                                         </div>
                                     </li>
                                     <li><a href="#">
-                                       <div class="user_img"><img src="images/1.png" alt=""></div>
+                                       <div class="user_img"><img src="/colored/images/1.png" alt=""></div>
                                        <div class="notification_desc">
                                         <p>Lorem ipsum dolor amet</p>
                                         <p><span>1 hour ago</span></p>
@@ -35,7 +35,7 @@
                                        <div class="clearfix"></div> 
                                     </a></li>
                                     <li class="odd"><a href="#">
-                                        <div class="user_img"><img src="images/2.png" alt=""></div>
+                                        <div class="user_img"><img src="/colored/images/2.png" alt=""></div>
                                        <div class="notification_desc">
                                         <p>Lorem ipsum dolor amet </p>
                                         <p><span>1 hour ago</span></p>
@@ -43,7 +43,7 @@
                                       <div class="clearfix"></div>  
                                     </a></li>
                                     <li><a href="#">
-                                       <div class="user_img"><img src="images/3.png" alt=""></div>
+                                       <div class="user_img"><img src="/colored/images/3.png" alt=""></div>
                                        <div class="notification_desc">
                                         <p>Lorem ipsum dolor amet </p>
                                         <p><span>1 hour ago</span></p>
@@ -66,7 +66,7 @@
                                         </div>
                                     </li>
                                     <li><a href="#">
-                                        <div class="user_img"><img src="images/2.png" alt=""></div>
+                                        <div class="user_img"><img src="/colored/images/2.png" alt=""></div>
                                        <div class="notification_desc">
                                         <p>Lorem ipsum dolor amet</p>
                                         <p><span>1 hour ago</span></p>
@@ -74,7 +74,7 @@
                                       <div class="clearfix"></div>  
                                      </a></li>
                                      <li class="odd"><a href="#">
-                                        <div class="user_img"><img src="images/1.png" alt=""></div>
+                                        <div class="user_img"><img src="/colored/images/1.png" alt=""></div>
                                        <div class="notification_desc">
                                         <p>Lorem ipsum dolor amet </p>
                                         <p><span>1 hour ago</span></p>
@@ -82,7 +82,7 @@
                                        <div class="clearfix"></div> 
                                      </a></li>
                                      <li><a href="#">
-                                        <div class="user_img"><img src="images/3.png" alt=""></div>
+                                        <div class="user_img"><img src="/colored/images/3.png" alt=""></div>
                                        <div class="notification_desc">
                                         <p>Lorem ipsum dolor amet </p>
                                         <p><span>1 hour ago</span></p>

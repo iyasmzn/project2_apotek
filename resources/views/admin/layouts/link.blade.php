@@ -14,22 +14,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="/colored/css/font.css" type="text/css"/>
 <link href="/colored/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
-<script src="/colored/js/jquery2.0.3.min.js"></script>
-<script src="/colored/js/modernizr.js"></script>
-<script src="/colored/js/jquery.cookie.js"></script>
-<script src="/colored/js/screenfull.js"></script>
-        <script>
-        $(function () {
-            $('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
-
-            if (!screenfull.enabled) {
-                return false;
-            }
-
-            
-
-            $('#toggle').click(function () {
-                screenfull.toggle($('#container')[0]);
-            }); 
-        });
-        </script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">

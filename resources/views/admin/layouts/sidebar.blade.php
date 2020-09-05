@@ -1,135 +1,87 @@
-    <nav class="main-menu">
+<?php 
+
+$menus=[
+    'home' => [
+        'title' => 'Home',
+        'route' => 'admin.home',
+        'icon' => 'fa-home',
+    ],
+    'users' => [
+        'title' => 'Users',
+        'route' => 'admin.users.index',
+        'icon' => 'fa-file-text-o',
+        'childrens' => [
+            [
+                'title' => 'List',
+                'route' => 'admin.users.index',
+            ],
+            [
+                'title' => 'Add New User',
+                'route' => 'admin.users.index',
+            ],
+        ],
+    ],
+    'drugs' => [
+        'title' => 'Drugs',
+        'route' => 'admin.drugs.index',
+        'icon' => 'fa-file-text-o',
+        'childrens' => [
+            [
+                'title' => 'List',
+                'route' => 'admin.drugs.index',
+            ],
+            [
+                'title' => 'Add',
+                'route' => 'admin.drugs.index',
+            ],
+        ],
+    ],
+];
+
+?>
+
+        <nav class="main-menu">
             <ul>
-                <li>
-                    <a href="index.html">
-                        <i class="fa fa-home nav_icon"></i>
-                        <span class="nav-text">
-                        Dashboard
-                        </span>
-                    </a>
-                </li>
-                <li class="has-subnav">
-                    <a href="javascript:;">
-                    <i class="fa fa-cogs" aria-hidden="true"></i>
-                    <span class="nav-text">
-                        UI Components
-                    </span>
-                    <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
-                    </a>
-                    <ul>
-                        <li>
-                        <a class="subnav-text" href="buttons.html">
-                        Buttons
-                        </a>
+                @foreach($menus as $menu)
+
+                    @if(isset($menu['childrens']))
+
+                        <li class="has-subnav">
+                            <a href="javascript:;">
+                                <i class="fa {{ $menu['icon'] }} nav_icon" aria-hidden="true"></i>
+                                <span class="nav-text">
+                                    {{ $menu['title'] }}
+                                </span>
+                                <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
+                            </a>
+                            <ul>
+
+                                @foreach($menu['childrens'] as $child)
+                                    <li>
+                                    <a class="subnav-text" href="{{ route($child['route']) }}">
+                                    {{ $child['title'] }}
+                                    </a>
+                                    </li>
+                                @endforeach
+
+                            </ul>
                         </li>
-                        <li>
-                        <a class="subnav-text" href="grids.html">
-                        Grids
-                        </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-subnav">
-                    <a href="javascript:;">
-                    <i class="fa fa-check-square-o nav_icon"></i>
-                    <span class="nav-text">
-                    Forms
-                    </span>
-                    <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
-                    </a>
-                    <ul>
-                        <li>
-                            <a class="subnav-text" href="inputs.html">Inputs</a>
-                        </li>
-                        <li>
-                            <a class="subnav-text" href="validation.html">Form Validation</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-subnav">
-                    <a href="javascript:;">
-                        <i class="fa fa-file-text-o nav_icon"></i>
-                            <span class="nav-text">Pages</span>
-                        <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
-                    </a>
-                    <ul>
-                        <li>
-                            <a class="subnav-text" href="gallery.html">
-                                Image Gallery
+
+                    @else
+
+                        <li class="">
+                            <a href="{{ route($menu['route']) }}">
+                                <i class="fa {{ $menu['icon'] }} nav_icon"></i>
+                                <span class="nav-text">
+                                {{$menu['title']}}
+                                </span>
                             </a>
                         </li>
-                        <li>
-                            <a class="subnav-text" href="calendar.html">
-                                Calendar
-                            </a>
-                        </li>
-                        <li>
-                            <a class="subnav-text" href="signup.html">
-                                Sign Up Page
-                            </a>
-                        </li>
-                        <li>
-                            <a class="subnav-text" href="login.html">
-                                Login Page
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="charts.html">
-                        <i class="fa fa-bar-chart nav_icon"></i>
-                        <span class="nav-text">
-                            Charts
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="typography.html">
-                        <i class="icon-font nav-icon"></i>
-                        <span class="nav-text">
-                        Typography
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="tables.html">
-                        <i class="icon-table nav-icon"></i>
-                        <span class="nav-text">
-                        Tables
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span class="nav-text">
-                        Maps
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="error.html">
-                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                        <span class="nav-text">
-                        Error Page
-                        </span>
-                    </a>
-                </li>
-                <li class="has-subnav">
-                    <a href="javascript:;">
-                        <i class="fa fa-list-ul" aria-hidden="true"></i>
-                        <span class="nav-text">Extras</span>
-                        <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
-                    </a>
-                    <ul>
-                        <li>
-                            <a class="subnav-text" href="faq.html">FAQ</a>
-                        </li>
-                        <li>
-                            <a class="subnav-text" href="blank.html">Blank Page</a>
-                        </li>
-                    </ul>
-                </li>
+                        
+                    @endif
+
+                @endforeach
+
             </ul>
             <ul class="logout">
                 <li>

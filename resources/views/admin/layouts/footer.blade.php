@@ -1,12 +1,4 @@
-    <div class="footer-copyright-area" style="position: fixed;bottom: 0;width: 100%;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="footer-copy-right">
-                        <p>Copyright © 2018 
-. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                    </div>
-                </div>
-            </div>
+
+        <div class="footer" style="position: relative;bottom: 0;">
+            <p>© 2020 Colored . All Rights Reserved . Design by <a href="http://w3layouts.com/">W3layouts</a></p>
         </div>
-    </div>

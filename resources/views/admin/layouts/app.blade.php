@@ -22,37 +22,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </a>
         </nav>
         
-@include('admin.layouts.sidebar')
+@include('admin.layouts.nav')
 
         <div class="main-grid">
-            <div class="agile-grids">   
-                <!-- blank-page -->
-                
-                <div class="banner">
-                    <h2>
-                        <a href="index.html">Home</a>
-                        <i class="fa fa-angle-right"></i>
-                        <span>Blank</span>
-                    </h2>
-                </div>
-                
-                <div class="blank">
-                    <div class="blank-page">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
-                    </div>
-               </div>
-                <!-- //blank-page -->
-            </div>
+           @yield('content')
         </div>
         
         <!-- footer -->
-        <div class="footer">
-            <p>© 2016 Colored . All Rights Reserved . Design by <a href="http://w3layouts.com/">W3layouts</a></p>
-        </div>
+@include('admin.layouts.footer')
         <!-- //footer -->
     </section>
-    <script src="/colored/js/bootstrap.js"></script>
-    <script src="/colored/js/proton.js"></script>
+
+@include('admin.layouts.java')
+    
 </body>
 </html>
