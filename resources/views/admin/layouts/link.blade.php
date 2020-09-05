@@ -1,52 +1,35 @@
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-<!-- Google Fonts
-    ============================================ -->
-<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
-<!-- Bootstrap CSS
-    ============================================ -->
-<link rel="stylesheet" href="/notika/admin/css/bootstrap.min.css">
-<!-- Bootstrap CSS
-    ============================================ -->
-<link rel="stylesheet" href="/notika/admin/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Colored Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- bootstrap-css -->
+<link rel="stylesheet" href="/colored/css/bootstrap.css">
+<!-- //bootstrap-css -->
+<!-- Custom CSS -->
+<link href="/colored/css/style.css" rel='stylesheet' type='text/css' />
+<!-- font CSS -->
+<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<!-- font-awesome icons -->
+<link rel="stylesheet" href="/colored/css/font.css" type="text/css"/>
+<link href="/colored/css/font-awesome.css" rel="stylesheet"> 
+<!-- //font-awesome icons -->
+<script src="/colored/js/jquery2.0.3.min.js"></script>
+<script src="/colored/js/modernizr.js"></script>
+<script src="/colored/js/jquery.cookie.js"></script>
+<script src="/colored/js/screenfull.js"></script>
+        <script>
+        $(function () {
+            $('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
 
-<!-- FontAwesome CDNJS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+            if (!screenfull.enabled) {
+                return false;
+            }
 
-<!-- owl.carousel CSS
-    ============================================ -->
-<link rel="stylesheet" href="/notika/admin/css/owl.carousel.css">
-<link rel="stylesheet" href="/notika/admin/css/owl.theme.css">
-<link rel="stylesheet" href="/notika/admin/css/owl.transitions.css">
-<!-- meanmenu CSS
-    ============================================ -->
-<link rel="stylesheet" href="/notika/admin/css/meanmenu/meanmenu.min.css">
-<!-- animate CSS
-    ============================================ -->
-<link rel="stylesheet" href="/notika/admin/css/animate.css">
-<!-- normalize CSS
-    ============================================ -->
-<link rel="stylesheet" href="/notika/admin/css/normalize.css">
-<!-- mCustomScrollbar CSS
-    ============================================ -->
-<link rel="stylesheet" href="/notika/admin/css/scrollbar/jquery.mCustomScrollbar.min.css">
-<!-- jvectormap CSS
-    ============================================ -->
-<link rel="stylesheet" href="/notika/admin/css/jvectormap/jquery-jvectormap-2.0.3.css">
-<!-- notika icon CSS
-    ============================================ -->
-<link rel="stylesheet" href="/notika/admin/css/notika-custom-icon.css">
-<!-- wave CSS
-    ============================================ -->
-<link rel="stylesheet" href="/notika/admin/css/wave/waves.min.css">
-<!-- main CSS
-    ============================================ -->
-<link rel="stylesheet" href="/notika/admin/css/main.css">
-<!-- style CSS
-    ============================================ -->
-<link rel="stylesheet" href="/notika/admin/style.css">
-<!-- responsive CSS
-    ============================================ -->
-<link rel="stylesheet" href="/notika/admin/css/responsive.css">
-<!-- modernizr JS
-    ============================================ -->
-<script src="/notika/admin/js/vendor/modernizr-2.8.3.min.js"></script>
+            
+
+            $('#toggle').click(function () {
+                screenfull.toggle($('#container')[0]);
+            }); 
+        });
+        </script>

@@ -22,4 +22,14 @@ Route::get('/', function () {
 Route::prefix('/admin')->name('admin.')->group(function ()
 {
 	Route::get('/', 'AdminController@index')->name('home');
+	Route::prefix('/users')->name('users.')->group(function ()
+	{
+		Route::get('/', 'UserController@index')->name('index');
+		Route::get('/edit', 'UserController@edit')->name('edit');
+	});
+	Route::prefix('/drugs')->name('drugs.')->group(function ()
+	{
+		Route::get('/', 'DrugController@index')->name('index');
+		Route::get('/edit', 'DrugController@edit')->name('edit');
+	});
 });

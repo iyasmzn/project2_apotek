@@ -1,43 +1,58 @@
-<!doctype html>
-<html class="no-js" lang="">
-
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>@yield('title') | iyasmzn~</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- favicon
-        ============================================ -->
-    @include('admin.layouts.link')
+<title>Colored  an Admin Panel Category Flat Bootstrap Responsive Website Template | Blank :: w3layouts</title>
+@include('admin.layouts.link')
+        
 </head>
+<body class="dashboard-page">
 
-<body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <!-- Start Header Top Area -->
-    @include('admin.layouts.topbar')
-    <!-- End Header Top Area -->
-    <!-- Mobile Menu start -->
-    @include('admin.layouts.mobile-menu')
-    <!-- Mobile Menu end -->
-    <!-- Main Menu area start-->
-    @include('admin.layouts.main-menu')
-    <!-- Main Menu area End-->
-    <!-- Start Status area -->
-    @yield('content')
-    <!-- End Status area-->
-    <!-- Start Sale Statistic area-->
-    <!-- End Sale Statistic area-->
-    <!-- Start Email Statistic area-->
-    <!-- End Email Statistic area-->
-    <!-- Start Realtime sts area-->
-    <!-- End Realtime sts area-->
-    <!-- Start Footer area-->
-    @include('admin.layouts.footer')
-    <!-- End Footer area-->
-    @include('admin.layouts.java')
+@include('admin.layouts.sidebar')
+    
+    <section class="wrapper scrollable">
+        <nav class="user-menu">
+            <a href="javascript:;" class="main-menu-access">
+            <i class="icon-proton-logo"></i>
+            <i class="icon-reorder"></i>
+            </a>
+        </nav>
+        
+@include('admin.layouts.sidebar')
+
+        <div class="main-grid">
+            <div class="agile-grids">   
+                <!-- blank-page -->
+                
+                <div class="banner">
+                    <h2>
+                        <a href="index.html">Home</a>
+                        <i class="fa fa-angle-right"></i>
+                        <span>Blank</span>
+                    </h2>
+                </div>
+                
+                <div class="blank">
+                    <div class="blank-page">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                    </div>
+               </div>
+                <!-- //blank-page -->
+            </div>
+        </div>
+        
+        <!-- footer -->
+        <div class="footer">
+            <p>© 2016 Colored . All Rights Reserved . Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+        </div>
+        <!-- //footer -->
+    </section>
+    <script src="/colored/js/bootstrap.js"></script>
+    <script src="/colored/js/proton.js"></script>
 </body>
-
 </html>
