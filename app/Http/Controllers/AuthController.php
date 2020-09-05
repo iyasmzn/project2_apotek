@@ -35,6 +35,7 @@ class AuthController extends Controller
     {
         $credentials    = $request->only('name', 'password');
         $isLoginSuccess = Auth::attempt($credentials);
+        dd($credentials);
         if ($isLoginSuccess) {
             return redirect()->intended('/admin/');
         } else {
