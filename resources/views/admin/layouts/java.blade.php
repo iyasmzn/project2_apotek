@@ -68,3 +68,6 @@
 <!-- tawk chat JS
     ============================================ -->
 <!-- <script src="{{asset('notika/admin/js/tawk-chat.js')}}"></script> -->
+
+<!-- FontAwesome CDNJS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script>

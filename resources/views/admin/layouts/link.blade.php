@@ -8,6 +8,10 @@
 <!-- Bootstrap CSS
     ============================================ -->
 <link rel="stylesheet" href="/notika/admin/css/font-awesome.min.css">
+
+<!-- FontAwesome CDNJS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+
 <!-- owl.carousel CSS
     ============================================ -->
 <link rel="stylesheet" href="/notika/admin/css/owl.carousel.css">
