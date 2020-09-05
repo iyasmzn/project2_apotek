@@ -21,8 +21,11 @@ Route::get('/', function () {
 // });
 Route::get('/login', 'AuthController@login')->name('login');
 Route::get('/register', 'AuthController@register')->name('register');
+Route::post('/register', 'AuthController@registrationProcess')->name('register');
+Route::post('/login', 'AuthController@loginProcess')->name('login');
+Route::post('/logout', 'AuthController@logout')->name('logout');
 
-Route::prefix('/admin')->name('admin.')->group(function ()
+Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function ()
 {
 	Route::get('/', 'AdminController@index')->name('home');
 	Route::prefix('/users')->name('users.')->group(function ()
