@@ -56,7 +56,11 @@
 	            				<td style="text-align: center;">{{ $user->role }}</td>
 	            				<td style="text-align: center;">
 	            					<a href="/admin/users/edit/{{ $user->id }}"><i class="fa fa-cogs"></i></a>
-	            					<a href="/admin/users/delete/{{ $user->id }}" style="color: red;font-size: 1.3em;"><i class="fa fa-trash-o" style="transform: translateY(-2px);"></i></a>
+	            					<form action="/admin/users/delete/{{ $user->id }}" method="post" style="display: inline-block;">
+	            						@csrf @method('DELETE')
+
+		            					<button style="color: red;font-size: 1.3em;background-color: white;border: none;"><i class="fa fa-trash-o" style="transform: translateY(-2px);"></i></button>	            						
+	            					</form>
 	            				</td>
 	            			</tr>
 

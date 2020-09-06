@@ -34,9 +34,42 @@ class UserController extends Controller
         $this->model->create($request->all());
         return redirect('/admin/users/');
     }
-    public function edit()
+    public function edit($id)
     {
-    	return view('admin.users.index');
+        // $this->authorize('update', $this->model);
+        $user = $this->model->find($id);
+        return view(('admin.users.edit'), compact('user'));
+    }
+    public function update(Request $request, $id)
+    {
+
+        $model = $this->model->find($id);
+        if ($request->photo_file) {
+            $this->removeImage($model->photo);
+            $request = $this->uploadImage($request);
+        }
+
+        if (!$request->password) {
+            $request->merge([
+                'password' => $model->password,
+            ]);
+        }else {
+            $encryptPassword = bcrypt($request->password);
+            $request->merge([
+                'password' => $encryptPassword,
+            ]);
+        }
+        $model->update($request->all());
+        return redirect(route('admin.users.index'));
+    }
+    public function delete($id)
+    {
+        // $this->authorize('delete', $this->model);
+        $model = $this->model->find($id);
+        $this->removeImage($model->photo);
+        $model->delete();
+
+        return redirect(route('admin.users.index'));
     }
     public function uploadImage($request)
     {

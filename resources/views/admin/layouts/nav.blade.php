@@ -22,6 +22,7 @@
                         <ul>
                             <li class="dropdown profile_details_drop">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <!-- <div style="width: 50px;height: 50px;background-image: url('/img/profile_img/{{ Auth::user()->photo }}');"></div> -->
                                     <div class="profile_img">   
                                         <span class="prfil-img"><i class="fa fa-user" aria-hidden="true"></i></span> 
                                         <div class="clearfix"></div>    
