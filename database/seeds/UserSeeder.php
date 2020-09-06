@@ -19,7 +19,6 @@ class UserSeeder extends Seeder
         	'email' => 'admin@admin',
         	'password' => bcrypt('admin'),
         	'gender' => 'L',
-        	'age' => '20',
         	'role' => 'admin',
         ]);
         User::create([
@@ -27,7 +26,6 @@ class UserSeeder extends Seeder
         	'email' => 'editor@editor',
         	'password' => bcrypt('editor'),
         	'gender' => 'L',
-        	'age' => '20',
         	'role' => 'editor',
         ]);
         User::create([
@@ -35,7 +33,6 @@ class UserSeeder extends Seeder
         	'email' => 'employee@employee',
         	'password' => bcrypt('employee'),
         	'gender' => 'P',
-        	'age' => '17',
         	'role' => 'employee',
         ]);
     }
