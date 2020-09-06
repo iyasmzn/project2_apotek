@@ -31,6 +31,8 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function ()
 	Route::prefix('/users')->name('users.')->group(function ()
 	{
 		Route::get('/', 'UserController@index')->name('index');
+		Route::get('/create', 'UserController@create')->name('create');
+		Route::post('/store', 'UserController@store')->name('store');
 		Route::get('/edit', 'UserController@edit')->name('edit');
 	});
 	Route::prefix('/drugs')->name('drugs.')->group(function ()

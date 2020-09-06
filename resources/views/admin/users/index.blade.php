@@ -7,14 +7,15 @@
 	    
 	    <div class="banner">
 	        <h2>
-	            <a href="index.html">Home</a>
+	            <a href="{{ route('admin.users.index') }}">Users</a>
 	            <i class="fa fa-angle-right"></i>
-	            <span>Blank</span>
+	            <span>List</span>
 	        </h2>
 	    </div>
 	    
 	    <div class="blank">
 	        <div class="blank-page">
+	        	<a href="{{ route('admin.users.create') }}" class="btn btn-md btn-success" style="margin-bottom: 20px;">Add New User</a>
 	            <table id="myTable">
 	            	<thead>
 	            		<tr>
