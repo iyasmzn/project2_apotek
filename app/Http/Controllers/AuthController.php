@@ -16,11 +16,11 @@ class AuthController extends Controller
     }
     public function login()
     {
-        return view('auth.login');
+        return view('admin.auth.login');
     }
     public function register()
     {
-        return view('auth.register');
+        return view('admin.auth.register');
     }
     public function registrationProcess(Request $request)
     {
@@ -35,7 +35,8 @@ class AuthController extends Controller
     {
         $credentials    = $request->only('name', 'password');
         $isLoginSuccess = Auth::attempt($credentials);
-        dd($credentials);
+        // dd(Auth::all());
+        // dd($isLoginSuccess);
         if ($isLoginSuccess) {
             return redirect()->intended('/admin/');
         } else {

@@ -13,16 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+// Route::get('/', function () {
+//     return redirect()->route('login');
+// });
 // Route::get('/admin', function () {
 //     return view('admin.index');
 // });
 Route::get('/login', 'AuthController@login')->name('login');
 Route::get('/register', 'AuthController@register')->name('register');
 Route::post('/register', 'AuthController@registrationProcess')->name('register');
-Route::post('/login', 'AuthController@loginProcess')->name('login');
+Route::post('/login', 'AuthController@loginProcess')->name('loginProcess');
 Route::post('/logout', 'AuthController@logout')->name('logout');
 
 Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function ()
