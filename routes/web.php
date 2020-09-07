@@ -46,4 +46,13 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function ()
         Route::put('/update/{id}', 'DrugController@update')->name('update');
         Route::delete('/delete/{id}', 'DrugController@delete')->name('delete');
 	});
+	Route::prefix('/order')->name('order.')->group(function ()
+	{
+		Route::get('/', 'OrderController@index')->name('index');
+		Route::get('/create', 'OrderController@create')->name('create');
+		Route::post('/store', 'OrderController@store')->name('store');
+		Route::get('/edit/{id}', 'OrderController@edit')->name('edit');
+        Route::put('/update/{id}', 'OrderController@update')->name('update');
+        Route::delete('/delete/{id}', 'OrderController@delete')->name('delete');
+	});
 });

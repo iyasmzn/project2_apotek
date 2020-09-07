@@ -4,12 +4,12 @@ $menus=[
     'home' => [
         'title' => 'Home',
         'route' => 'admin.home',
-        'icon' => 'fa-home',
+        'icon' => 'fa fa-home',
     ],
     'users' => [
         'title' => 'Users',
         'route' => 'admin.users.index',
-        'icon' => 'fa-file-text-o',
+        'icon' => 'fa fa-file-text-o',
         'childrens' => [
             [
                 'title' => 'List',
@@ -24,7 +24,7 @@ $menus=[
     'drugs' => [
         'title' => 'Drugs',
         'route' => 'admin.drugs.index',
-        'icon' => 'fa-file-text-o',
+        'icon' => 'fa fa-file-text-o',
         'childrens' => [
             [
                 'title' => 'List',
@@ -39,7 +39,7 @@ $menus=[
     'tags' => [
         'title' => 'Tags',
         'route' => 'admin.drugs.index',
-        'icon' => 'fa-file-text-o',
+        'icon' => 'fa fa-file-text-o',
         'childrens' => [
             [
                 'title' => 'List',
@@ -53,8 +53,18 @@ $menus=[
     ],
     'orders' => [
         'title' => 'Orders',
-        'route' => 'admin.drugs.index',
-        'icon' => 'fa-file-text-o',
+        'route' => 'admin.order.index',
+        'icon' => 'fa fa-file-text-o',
+        'childrens' => [
+            [
+                'title' => 'List',
+                'route' => 'admin.order.index',
+            ],
+            [
+                'title' => 'Order',
+                'route' => 'admin.order.create',
+            ],
+        ],
     ],
 ];
 
@@ -68,7 +78,7 @@ $menus=[
 
                         <li class="has-subnav">
                             <a href="javascript:;">
-                                <i class="fa {{ $menu['icon'] }} nav_icon" aria-hidden="true"></i>
+                                <i class="{{ $menu['icon'] }} nav_icon" aria-hidden="true"></i>
                                 <span class="nav-text">
                                     {{ $menu['title'] }}
                                 </span>
