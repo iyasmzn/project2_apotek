@@ -37,7 +37,7 @@
 						</div>
 						<div class="comments-info tweets-info">
 							<h3>{{ count(DB::table('tags')->get()) }}</h3>
-							<a href="{{ route('admin.users.index') }}">Tags</a>
+							<a href="{{ route('admin.tags.index') }}">Tags</a>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
@@ -49,7 +49,7 @@
 						</div>
 						<div class="comments-info views-info">
 							<h3>{{ count(DB::table('orders')->get()) }}</h3>
-							<a href="{{ route('admin.users.index') }}">Orders</a>
+							<a href="{{ route('admin.order.index') }}">Orders</a>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
