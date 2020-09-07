@@ -37,6 +37,15 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function ()
         Route::put('/update/{id}', 'UserController@update')->name('update');
         Route::delete('/delete/{id}', 'UserController@delete')->name('delete');
 	});
+	Route::prefix('/tags')->name('tags.')->group(function ()
+	{
+		Route::get('/', 'TagController@index')->name('index');
+		Route::get('/create', 'TagController@create')->name('create');
+		Route::post('/store', 'TagController@store')->name('store');
+		Route::get('/edit/{id}', 'TagController@edit')->name('edit');
+        Route::put('/update/{id}', 'TagController@update')->name('update');
+        Route::delete('/delete/{id}', 'TagController@delete')->name('delete');
+	});
 	Route::prefix('/drugs')->name('drugs.')->group(function ()
 	{
 		Route::get('/', 'DrugController@index')->name('index');

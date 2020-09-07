@@ -7,6 +7,16 @@
 
 <script src="/colored/js/screenfull.js"></script>
         <script>
+            var check = function() {
+              if (document.getElementById('password').value ==
+                document.getElementById('confirm_password').value) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'matching';
+              } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'not matching';
+              }
+            }
         $(function () {
     	    $('#myTable').DataTable();
             $('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
@@ -22,7 +32,7 @@
             });
            $(".tag-select").select2({
                tags: true,
-           }); 
+           });
         });
         </script>
 <script src="/colored/js/bootstrap.js"></script>

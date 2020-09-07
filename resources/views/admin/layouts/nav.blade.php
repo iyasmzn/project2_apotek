@@ -33,10 +33,10 @@
                                     <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
                                     <li> 
                                         <span>
-                                            <form action="{{ route('logout') }}" method="post">
+                                            <form id="navLogoutForm" action="{{ route('logout') }}" method="post" style="color: rgb(153,153,153);transform: translateX(15px);">
                                                 @csrf
                                                 <i class="fa fa-sign-out"></i>
-                                                <input type="submit" value="Logout">
+                                                <input type="submit" value="Logout" style="background-color: white;border: none;">
                                             </form>
                                         </span> 
                                     </li>

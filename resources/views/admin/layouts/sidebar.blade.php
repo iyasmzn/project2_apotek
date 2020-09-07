@@ -5,11 +5,14 @@ $menus=[
         'title' => 'Home',
         'route' => 'admin.home',
         'icon' => 'fa fa-home',
+        'add_class' => '',
+
     ],
     'users' => [
         'title' => 'Users',
         'route' => 'admin.users.index',
-        'icon' => 'fa fa-file-text-o',
+        'icon' => 'fa fa-users',
+        'add_class' => 'wreckClass',
         'childrens' => [
             [
                 'title' => 'List',
@@ -24,7 +27,8 @@ $menus=[
     'drugs' => [
         'title' => 'Drugs',
         'route' => 'admin.drugs.index',
-        'icon' => 'fa fa-file-text-o',
+        'icon' => 'fa fa-ambulance',
+        'add_class' => 'wreckClass',
         'childrens' => [
             [
                 'title' => 'List',
@@ -38,16 +42,17 @@ $menus=[
     ],
     'tags' => [
         'title' => 'Tags',
-        'route' => 'admin.drugs.index',
-        'icon' => 'fa fa-file-text-o',
+        'route' => 'admin.tags.index',
+        'icon' => 'fa fa-tag',
+        'add_class' => 'wreckClass',
         'childrens' => [
             [
                 'title' => 'List',
-                'route' => 'admin.drugs.index',
+                'route' => 'admin.tags.index',
             ],
             [
                 'title' => 'Add Tag',
-                'route' => 'admin.drugs.index',
+                'route' => 'admin.tags.index',
             ],
         ],
     ],
@@ -55,6 +60,7 @@ $menus=[
         'title' => 'Orders',
         'route' => 'admin.order.index',
         'icon' => 'fa fa-file-text-o',
+        'add_class' => '',
         'childrens' => [
             [
                 'title' => 'List',
@@ -76,9 +82,9 @@ $menus=[
 
                     @if(isset($menu['childrens']))
 
-                        <li class="has-subnav">
+                        <li class="has-subnav {{ request()->routeIs("$menu[route]*") ? 'active' : '' }}">
                             <a href="javascript:;">
-                                <i class="{{ $menu['icon'] }} nav_icon" aria-hidden="true"></i>
+                                <i class="{{ $menu['add_class'] }} {{ $menu['icon'] }} nav_icon" aria-hidden="true"></i>
                                 <span class="nav-text">
                                     {{ $menu['title'] }}
                                 </span>
@@ -87,7 +93,7 @@ $menus=[
                             <ul>
 
                                 @foreach($menu['childrens'] as $child)
-                                    <li>
+                                    <li class="{{ request()->routeIs("$child[route]*") ? 'active' : '' }}">
                                     <a class="subnav-text" href="{{ route($child['route']) }}">
                                     {{ $child['title'] }}
                                     </a>
@@ -99,7 +105,7 @@ $menus=[
 
                     @else
 
-                        <li class="">
+                        <li class="{{ request()->routeIs("$menu[route]*") ? 'active' : '' }}">
                             <a href="{{ route($menu['route']) }}">
                                 <i class="fa {{ $menu['icon'] }} nav_icon"></i>
                                 <span class="nav-text">
@@ -115,12 +121,16 @@ $menus=[
             </ul>
             <ul class="logout">
                 <li>
-                <a href="login.html">
+                    <form action="{{ route('logout') }}" method="post"> 
+                        @csrf
+                <button style="background-color: rgb(0,188,212);border: none;color: white;">
                 <i class="icon-off nav-icon"></i>
                 <span class="nav-text">
                 Logout
                 </span>
-                </a>
+                </button>
+
+                    </form>
                 </li>
             </ul>
         </nav>

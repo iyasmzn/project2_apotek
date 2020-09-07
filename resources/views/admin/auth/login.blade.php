@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <head>
-<title>Colored  an Admin Panel Category Flat Bootstrap Responsive Website Template | Login :: w3layouts</title>
+<title>Login Page | Iyasmzn</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Colored Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -38,24 +38,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input type="submit" class="register" value="Login">
 				</form>
 				<div class="signin-text">
-					<div class="text-left">
-						<p><a href="#"> Forgot Password? </a></p>
-					</div>
 					<div class="text-right">
-						<p><a href="{{ route('register') }}"> Create New Account</a></p>
+						<p><a href="{{ route('register') }}" class="btn btn-md btn-warning" style="color: white;"> Create New Account</a></p>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
-				<h5>- OR -</h5>
-				<div class="footer-icons">
-					<ul>
-						<li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#" class="twitter facebook"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#" class="twitter chrome"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="#" class="twitter dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-					</ul>
-				</div>
-				<a href="index.html">Back To Home</a>
 			</div>
 			
 			<!-- footer -->

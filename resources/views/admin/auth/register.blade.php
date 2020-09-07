@@ -6,23 +6,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <head>
-<title>Colored  an Admin Panel Category Flat Bootstrap Responsive Website Template | Signup :: w3layouts</title>
+<title>Register Page | Iyasmzn</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Colored Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- bootstrap-css -->
-<link rel="stylesheet" href="/colored/css/bootstrap.css">
+<!-- <link rel="stylesheet" href="/colored/css/bootstrap.css"> -->
 <!-- //bootstrap-css -->
 <!-- Custom CSS -->
-<link href="/colored/css/style.css" rel='stylesheet' type='text/css' />
+<!-- <link href="/colored/css/style.css" rel='stylesheet' type='text/css' /> -->
 <!-- font CSS -->
-<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<!-- <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'> -->
 <!-- font-awesome icons -->
-<link rel="stylesheet" href="/colored/css/font.css" type="text/css"/>
-<link href="/colored/css/font-awesome.css" rel="stylesheet"> 
+<!-- <link rel="stylesheet" href="/colored/css/font.css" type="text/css"/> -->
+<!-- <link href="/colored/css/font-awesome.css" rel="stylesheet">  -->
 <!-- //font-awesome icons -->
+@include('admin.layouts.link')
 </head>
 <body class="signup-body">
 		<div class="agile-signup">	
@@ -35,10 +36,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					@csrf
 					<input type="text" name="name" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}">
 					<input type="email" name="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
-					<input type="password" name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+					<input id="password" type="password" name="password" placeholder="Password">
+					<!-- <input id="confirm_password" type="password" name="confirm_password" placeholder="Confirm Password" onkeyup="check();"> -->
+					<!-- <input id="message" type="text" name="message" placeholder="Confirmation password status" disabled style="border: none;padding: 0px;margin: 0px;transform: translateX(20px);opacity: 1;transition: all 0.3s"> -->
+					
 					<input type="submit" class="register" value="Sign Up">
 				</form>
-				<p>Already have an account? <a href="{{ route('login') }}">Sign In</a></p>
+				<p>Already have an account? <a href="{{ route('login') }}" class="btn btn-md btn-info" style="color: white;">Sign In</a></p>
 			</div>
 			
 			<!-- footer -->
@@ -48,6 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!-- //footer -->
 			
 		</div>
-	<script src="/colored/js/proton.js"></script>
+	<!-- <script src="/colored/js/proton.js"></script> -->
+	@include('admin.layouts.java')
 </body>
 </html>
