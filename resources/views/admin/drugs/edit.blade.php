@@ -21,8 +21,8 @@
 	        	<div class="forms">
 	        			<h3 class="title1">Data</h3>
 	        			<div class="form-three widget-shadow">
-	        				<form class="form-horizontal" action="/admin/drugs/store/{{ $drug->id }}" method="post" enctype="multipart/form-data">
-	        					@csrf
+	        				<form class="form-horizontal" action="/admin/drugs/update/{{ $drug->id }}" method="post" enctype="multipart/form-data">
+	        					@csrf @method('PUT')
 	        					<div class="form-group">
 	        						<div class="col-sm-1">
 	        							<span class="btn btn-sm btn-danger" onclick='document.getElementById("Disabled_Input").style = "display: inline-block";'>Edit Drug Code</span>
@@ -40,9 +40,9 @@
 	        					<div class="form-group">
 	        						<label for="radio" class="col-sm-2 control-label" style="width: 120px;">Type</label>
 	        						<div class="col-sm-3">
-	        							<div class="radio-inline"><label><input type="radio" name="type" value="tablet"> Tablet</label></div>
-	        							<div class="radio-inline"><label><input type="radio" name="type" value="liquid"> Liquid</label></div>
-	        							<div class="radio-inline"><label><input type="radio" name="type" value="cream"> Cream</label></div>
+	        							<div class="radio-inline"><label><input type="radio" name="type" value="tablet" {{ ($drug->type == 'tablet' ) ? 'checked' : ''  }}> Tablet</label></div>
+	        							<div class="radio-inline"><label><input type="radio" name="type" value="liquid" {{ ($drug->type == 'liquid' ) ? 'checked' : ''  }}> Liquid</label></div>
+	        							<div class="radio-inline"><label><input type="radio" name="type" value="cream" {{ ($drug->type == 'cream' ) ? 'checked' : ''  }}> Cream</label></div>
 	        						</div>
 	        						<label for="focusedinputStock" class="col-sm-2 control-label" style="width: 50px;">Stock</label>
 	        						<div class="col-sm-1">
@@ -73,7 +73,24 @@
 	        						<div class="col-sm-8">
 	        							<input type="file" class="form-control1" id="image" accept="image/*" name="image_file">
 	        						</div>
+	        						<div class="col-sm-2">
+	        							<p style="color: red">Max size is 2048KiB</p>
+	        						</div>
 	        					</div>
+						        <div class="form-group">
+						            <label class="col-sm-1 control-label text-left" for="hor-tags">Tags</label>
+						            <div class="col-sm-5">
+
+						                <select id="hor-tags" class="tag-select form-control" name="tags[]" multiple="multiple">
+
+						                	@foreach(DB::table('tags')->get() as $tag)
+						                	<option {{ $drug->Tag()->pluck('tag_id')->contains($tag->id) ? 'selected': '' }}>{{ $tag->name }}</option>
+						                	@endforeach
+
+						                </select>
+
+						            </div>
+						        </div>
 	        					<div class="form-group" style="text-align: center;margin-top: 30px">
 	        						<input type="submit" value="SUBMIT" class="btn btn-lg btn-success">
 	        					</div>

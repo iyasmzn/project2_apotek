@@ -16,7 +16,7 @@ class CreateDrugTagTable extends Migration
         Schema::create('drug_tag', function (Blueprint $table) {
             $table->id();
             $table->foreignId('drug_id');
-            $table->foreignId('use_id');
+            $table->foreignId('tag_id');
             $table->timestamps();
         });
     }

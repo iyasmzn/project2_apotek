@@ -17,7 +17,7 @@ $menus=[
             ],
             [
                 'title' => 'Add New User',
-                'route' => 'admin.users.index',
+                'route' => 'admin.users.create',
             ],
         ],
     ],
@@ -31,10 +31,30 @@ $menus=[
                 'route' => 'admin.drugs.index',
             ],
             [
-                'title' => 'Add',
+                'title' => 'Add Drug',
+                'route' => 'admin.drugs.create',
+            ],
+        ],
+    ],
+    'tags' => [
+        'title' => 'Tags',
+        'route' => 'admin.drugs.index',
+        'icon' => 'fa-file-text-o',
+        'childrens' => [
+            [
+                'title' => 'List',
+                'route' => 'admin.drugs.index',
+            ],
+            [
+                'title' => 'Add Tag',
                 'route' => 'admin.drugs.index',
             ],
         ],
+    ],
+    'orders' => [
+        'title' => 'Orders',
+        'route' => 'admin.drugs.index',
+        'icon' => 'fa-file-text-o',
     ],
 ];
 

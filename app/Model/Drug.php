@@ -11,5 +11,9 @@ class Drug extends Model
         'drug_code', 'name', 'type', 'stock', 'exp_date', 'price', 'information', 'image',
     ];
 
+    public function Tag()
+    {
+        return $this->belongsToMany('App\Model\Tag');
+    }
 
 }

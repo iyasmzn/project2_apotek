@@ -78,6 +78,9 @@
 	        						<div class="col-sm-8">
 	        							<input type="file" class="form-control1" id="photos" accept="image/*" name="photo_file">
 	        						</div>
+	        						<div class="col-sm-2">
+	        							<p style="color: red">Max size is 2048KiB</p>
+	        						</div>
 	        					</div>
 	        					<div class="form-group" style="text-align: center;margin-top: 30px">
 	        						<input type="submit" value="SUBMIT" class="btn btn-lg btn-success">

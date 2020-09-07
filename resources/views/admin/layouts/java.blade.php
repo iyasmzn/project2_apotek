@@ -3,6 +3,8 @@
 <script src="/colored/js/modernizr.js"></script>
 <script src="/colored/js/jquery.cookie.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
 <script src="/colored/js/screenfull.js"></script>
         <script>
         $(function () {
@@ -17,7 +19,10 @@
 
             $('#toggle').click(function () {
                 screenfull.toggle($('#container')[0]);
-            }); 
+            });
+           $(".tag-select").select2({
+               tags: true,
+           }); 
         });
         </script>
 <script src="/colored/js/bootstrap.js"></script>

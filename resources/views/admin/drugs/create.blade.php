@@ -73,7 +73,24 @@
 	        						<div class="col-sm-8">
 	        							<input type="file" class="form-control1" id="image" accept="image/*" name="image_file">
 	        						</div>
+	        						<div class="col-sm-2">
+	        							<p style="color: red">Max size is 2048KiB</p>
+	        						</div>
 	        					</div>
+						        <div class="form-group">
+						            <label class="col-sm-1 control-label text-left" for="hor-tags">Tags</label>
+						            <div class="col-sm-5">
+
+						                <select id="hor-tags" class="tag-select form-control" name="tags[]" multiple="multiple">
+
+						                	@foreach(DB::table('tags')->get() as $tag)
+						                	<option>{{ $tag->name }}</option>
+						                	@endforeach
+
+						                </select>
+
+						            </div>
+						        </div>
 	        					<div class="form-group" style="text-align: center;margin-top: 30px">
 	        						<input type="submit" value="SUBMIT" class="btn btn-lg btn-success">
 	        					</div>
