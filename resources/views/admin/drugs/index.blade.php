@@ -38,7 +38,7 @@
 	            				<td>{{ $no++ }}</td>
 	            				<td>{{ $drug->drug_code }}</td>
 	            				<td>
-	            					<div style="width: 100px;height: 100px;border-radius: 50px;background-color: gray;"></div>
+	            					<div style="width: 75px;height: 75px;border-radius: 50px;background-color: rgb(91,192,222);background-image: url('/img/drug_img/{{ $drug->image }}');background-size: cover;background-position: center;"></div>
 	            				</td>
 	            				<td>{{ $drug->name }}</td>
 	            				<td>{{ $drug->stock }}</td>
