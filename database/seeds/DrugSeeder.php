@@ -17,7 +17,7 @@ class DrugSeeder extends Seeder
         Drug::truncate();
         for ($i=0; $i < 10; $i++) { 
         	Drug::create([
-        		'drug_code' => Str::random(10),
+        		'drug_code' => uniqid(),
         		'name' => $fake->word(),
         		'type' => array_rand($type,1),
         		'stock' => rand(0,200),

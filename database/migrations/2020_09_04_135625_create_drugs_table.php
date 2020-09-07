@@ -15,7 +15,7 @@ class CreateDrugsTable extends Migration
     {
         Schema::create('drugs', function (Blueprint $table) {
             $table->id();
-            $table->string('drug_code');
+            $table->string('drug_code')->unique();
             $table->string('name');
             $table->enum('type', ['tablet', 'liquid', 'cream']);
             $table->integer('stock');

@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return redirect()->route('login');
-// });
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 // Route::get('/admin', function () {
 //     return view('admin.index');
 // });
@@ -40,6 +40,10 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function ()
 	Route::prefix('/drugs')->name('drugs.')->group(function ()
 	{
 		Route::get('/', 'DrugController@index')->name('index');
-		Route::get('/edit', 'DrugController@edit')->name('edit');
+		Route::get('/create', 'DrugController@create')->name('create');
+		Route::post('/store', 'DrugController@store')->name('store');
+		Route::get('/edit/{id}', 'DrugController@edit')->name('edit');
+        Route::put('/update/{id}', 'DrugController@update')->name('update');
+        Route::delete('/delete/{id}', 'DrugController@delete')->name('delete');
 	});
 });

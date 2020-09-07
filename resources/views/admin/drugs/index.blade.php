@@ -1,5 +1,7 @@
 @extends('admin.layouts.app')
 
+@section('title', 'Drugs')
+
 @section('content')
 	
 	<div class="agile-grids">   
@@ -15,6 +17,8 @@
 	    
 	    <div class="blank">
 	        <div class="blank-page">
+	        	<a href="{{ route('admin.drugs.create') }}" class="btn btn-md btn-info" style="margin-bottom: 20px;">Add New DRUG</a>
+
 	            <table id="myTable">
 	            	<thead>
 	            		<tr>
@@ -38,8 +42,13 @@
 	            				</td>
 	            				<td>{{ $drug->name }}</td>
 	            				<td>{{ $drug->stock }}</td>
-	            				<td>
-	            					<i class="fa fa-trash"></i>
+	            				<td style="text-align: center;">
+	            					<a href="/admin/drugs/edit/{{ $drug->id }}"><i class="fa fa-cogs"></i></a>
+	            					<form action="/admin/drugs/delete/{{ $drug->id }}" method="post" style="display: inline-block;">
+	            						@csrf @method('DELETE')
+
+		            					<button style="color: red;font-size: 1.3em;background-color: white;border: none;"><i class="fa fa-trash-o" style="transform: translateY(-2px);"></i></button>	            						
+	            					</form>
 	            				</td>
 	            			</tr>
 
