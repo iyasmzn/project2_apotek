@@ -39,9 +39,10 @@ class DrugController extends Controller
     		return redirect('/admin/drugs/');
     	}
     }
-    public function edit()
+    public function edit($id)
     {
-    	return view('admin.drugs.index');
+    	$drug = $this->model::find($id);
+    	return view('admin.drugs.edit', compact('drug'));
     }
     public function uploadImage($request)
     {
