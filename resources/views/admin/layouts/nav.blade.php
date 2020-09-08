@@ -29,8 +29,8 @@
                                     </div>  
                                 </a>
                                 <ul class="dropdown-menu drp-mnu">
-                                    <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
-                                    <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
+                                    <li> <a href="/admin/users/edit/{{ Auth::user()->id }}"><i class="fa fa-cog"></i> Settings</a> </li> 
+                                    <li> <a href="/admin/users/view/{{ Auth::user()->id }}"><i class="fa fa-user"></i> Profile</a> </li> 
                                     <li> 
                                         <span>
                                             <form id="navLogoutForm" action="{{ route('logout') }}" method="post" style="color: rgb(153,153,153);transform: translateX(15px);">

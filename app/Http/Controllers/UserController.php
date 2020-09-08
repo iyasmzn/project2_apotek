@@ -18,6 +18,11 @@ class UserController extends Controller
     	$users = $this->model->all();
     	return view('admin.users.index', compact('users'));
     }
+    public function view($id)
+    {
+        $user = $this->model->find($id);
+        return view(('admin.users.view'), compact('user'));
+    }
     public function create()
     {
     	return view('admin.users.create');

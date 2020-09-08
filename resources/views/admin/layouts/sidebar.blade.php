@@ -93,11 +93,16 @@ $menus=[
                             <ul>
 
                                 @foreach($menu['childrens'] as $child)
+
+                                    @if($child['title'] == 'Add New User' && !(Auth::user()->role == 'admin'))
+
+                                    @else
                                     <li class="{{ request()->routeIs("$child[route]*") ? 'active' : '' }}">
                                     <a class="subnav-text" href="{{ route($child['route']) }}">
                                     {{ $child['title'] }}
                                     </a>
                                     </li>
+                                    @endif
                                 @endforeach
 
                             </ul>

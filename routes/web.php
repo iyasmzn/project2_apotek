@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect()->route('login');
 });
+Route::get('/home', function () {
+    return redirect()->route('admin.home');
+});
 // Route::get('/admin', function () {
 //     return view('admin.index');
 // });
@@ -36,6 +39,7 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function ()
 		Route::get('/edit/{id}', 'UserController@edit')->name('edit');
         Route::put('/update/{id}', 'UserController@update')->name('update');
         Route::delete('/delete/{id}', 'UserController@delete')->name('delete');
+		Route::get('/view/{id}', 'UserController@view')->name('view');
 	});
 	Route::prefix('/tags')->name('tags.')->group(function ()
 	{
