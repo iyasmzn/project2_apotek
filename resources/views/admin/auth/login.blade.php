@@ -33,8 +33,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<form action="{{ route('loginProcess') }}" method="post">
 					@csrf
-					<input type="text" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" name="name" >
-					<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" name="password">
+					<input type="text" placeholder="Username" name="name" value="{{ old('name') }}"><br>
+					<span style="color: red">{{ $errors->user->first('name') }}</span>
+
+					<input type="password" placeholder="Password" name="password"><br>
+					@if(Session::has('error'))
+					<span style="color: red">{{ Session::get('error') }}</span>
+					@endif
+
 					<input type="submit" class="register" value="Login">
 				</form>
 				<div class="signin-text">

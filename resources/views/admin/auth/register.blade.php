@@ -34,9 +34,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<form action="{{ route('register') }}" method="post">
 					@csrf
-					<input type="text" name="name" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}">
-					<input type="email" name="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
-					<input id="password" type="password" name="password" placeholder="Password">
+					<input type="text" name="name" placeholder="Username" value="{{ old('name') }}">
+					<br>
+					<span style="color: red">{{ $errors->user->first('name') }}</span>
+					<input type="email" name="email" placeholder="Email" value="{{ old('email') }}">
+					<br>
+					<span style="color: red">{{ $errors->user->first('email') }}</span>
+					<input id="password" type="password" name="password" placeholder="Password" value="{{ old('pasword') }}">
+					<br>
+					<span style="color: red">{{ $errors->user->first('password') }}</span>
 					<!-- <input id="confirm_password" type="password" name="confirm_password" placeholder="Confirm Password" onkeyup="check();"> -->
 					<!-- <input id="message" type="text" name="message" placeholder="Confirmation password status" disabled style="border: none;padding: 0px;margin: 0px;transform: translateX(20px);opacity: 1;transition: all 0.3s"> -->
 					
