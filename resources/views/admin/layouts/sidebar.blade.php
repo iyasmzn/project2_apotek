@@ -58,17 +58,17 @@ $menus=[
     ],
     'orders' => [
         'title' => 'Orders',
-        'route' => 'admin.order.index',
+        'route' => 'admin.orders.index',
         'icon' => 'fa fa-file-text-o',
         'add_class' => '',
         'childrens' => [
             [
                 'title' => 'List',
-                'route' => 'admin.order.index',
+                'route' => 'admin.orders.index',
             ],
             [
-                'title' => 'Order',
-                'route' => 'admin.order.create',
+                'title' => 'Make an Order',
+                'route' => 'admin.orders.create',
             ],
         ],
     ],

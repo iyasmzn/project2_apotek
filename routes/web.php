@@ -59,7 +59,7 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function ()
         Route::put('/update/{id}', 'DrugController@update')->name('update');
         Route::delete('/delete/{id}', 'DrugController@delete')->name('delete');
 	});
-	Route::prefix('/order')->name('order.')->group(function ()
+	Route::prefix('/orders')->name('orders.')->group(function ()
 	{
 		Route::get('/', 'OrderController@index')->name('index');
 		Route::get('/create', 'OrderController@create')->name('create');

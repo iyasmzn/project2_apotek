@@ -9,7 +9,7 @@
 	    
 	    <div class="banner">
 	        <h2>
-	            <a href="{{ route('admin.order.index') }}">Order</a>
+	            <a href="{{ route('admin.orders.index') }}">Orders</a>
 	            <i class="fa fa-angle-right"></i>
 	            <span>List</span>
 	        </h2>
@@ -17,7 +17,7 @@
 	    
 	    <div class="blank">
 	        <div class="blank-page">
-	        	<a href="{{ route('admin.order.create') }}" class="btn btn-md btn-info" style="margin-bottom: 20px;">Order</a>
+	        	<a href="{{ route('admin.orders.create') }}" class="btn btn-md btn-info" style="margin-bottom: 20px;">Make Order</a>
 	            <table id="myTable">
 	            	<thead>
 	            		<tr>
