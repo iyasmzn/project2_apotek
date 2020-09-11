@@ -27,6 +27,10 @@ class DrugController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'type' => 'required',
+            'stock' => 'required',
+            'exp_date' => 'required',
+            'price' => 'required',
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator, 'user')->withInput();

@@ -42,20 +42,31 @@
 	        					</div>
 	        					<div class="form-group">
 	        						<label for="radio" class="col-sm-2 control-label" style="width: 120px;">Type</label>
-	        						<div class="col-sm-3">
-	        							<div class="radio-inline"><label><input type="radio" name="type" value="tablet"> Tablet</label></div>
-	        							<div class="radio-inline"><label><input type="radio" name="type" value="liquid"> Liquid</label></div>
-	        							<div class="radio-inline"><label><input type="radio" name="type" value="cream"> Cream</label></div>
+	        						<div class="col-sm-2">
+	        							<div class="radio-inline"><label><input type="radio" name="type" value="tablet" {{ (old('type') == 'tablet') ? 'checked' : '' }}> Tablet</label></div>
+	        							<div class="radio-inline"><label><input type="radio" name="type" value="liquid" {{ (old('type') == 'liquid') ? 'checked' : '' }}> Liquid</label></div>
+	        							<div class="radio-inline"><label><input type="radio" name="type" value="cream" {{ (old('type') == 'cream') ? 'checked' : '' }}> Cream</label></div>
 	        						</div>
-	        						<label for="focusedinputStock" class="col-sm-2 control-label" style="width: 50px;">Stock</label>
+	        						<div class="col-sm-3">
+	        							<p class="help-block" style="color: red;">{{ $errors->user->first('type') }}</p>
+	        						</div>
+	        					</div>
+	        					<div class="form-group">
+	        						<label for="focusedinputStock" class="col-sm-2 control-label" style="width: 120px;">Stock</label>
 	        						<div class="col-sm-1">
-	        							<input type="number" class="form-control1" name="stock" id="focusedinputStock" placeholder="999">
+	        							<input type="number" class="form-control1" name="stock" id="focusedinputStock" placeholder="999" value="{{ old('stock') }}">
+	        						</div>
+	        						<div class="col-sm-3">
+	        							<p class="help-block" style="color: red;">{{ $errors->user->first('stock') }}</p>
 	        						</div>
 	        					</div>
 	        					<div class="form-group">
 	        						<label for="focusedinputExpDate" class="col-sm-2 control-label" style="width: 120px;">Expired Date</label>
 	        						<div class="col-sm-2">
-	        							<input type="date" class="form-control1" name="exp_date" id="focusedinputExpDate">
+	        							<input type="date" class="form-control1" name="exp_date" id="focusedinputExpDate" value="{{ old('exp_date') }}">
+	        						</div>
+	        						<div class="col-sm-3">
+	        							<p class="help-block" style="color: red;">{{ $errors->user->first('exp_date') }}</p>
 	        						</div>
 	        					</div>
 	        					<div class="form-group">
@@ -64,12 +75,15 @@
 	        							<p class="help-block" style="font-weight: bold;text-align: left;">Rp,</p>
 	        						</div> -->
 	        						<div class="col-sm-2">
-	        							<input type="number" class="form-control1" id="inputPrice" placeholder="999,999" name="price" style="text-align: left;">
+	        							<input type="number" class="form-control1" id="inputPrice" placeholder="999,999" name="price" style="text-align: left;" value="{{ old('price') }}">
+	        						</div>
+	        						<div class="col-sm-3">
+	        							<p class="help-block" style="color: red;">{{ $errors->user->first('price') }}</p>
 	        						</div>
 	        					</div>
 	        					<div class="form-group">
 	        						<label for="info" class="col-sm-2 control-label" style="width: 120px;">Information</label>
-	        						<div class="col-sm-8"><textarea name="information" id="info" cols="50" rows="4" class="form-control1" style="height: 100px;"></textarea></div>
+	        						<div class="col-sm-8"><textarea name="information" id="info" cols="50" rows="4" class="form-control1" style="height: 100px;">{{ old('information') }}</textarea></div>
 	        					</div>
 	        					<div class="form-group">
 	        						<label for="image" class="col-sm-2 control-label" style="width: 120px;">Drug Image</label>
