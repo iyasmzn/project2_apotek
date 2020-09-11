@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -29,6 +30,16 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:users',
+            'email' => 'required|unique:users',
+            'password' => 'required|min:8',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator, 'user')->withInput();
+        }
+
         if ($request->photo_file) {
             $request = $this->uploadImage($request);
         }
@@ -48,6 +59,13 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
 
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator, 'user')->withInput();
+        }
         $model = $this->model->find($id);
         if ($request->photo_file) {
             $this->removeImage($model->photo);

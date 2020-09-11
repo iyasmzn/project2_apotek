@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Drug;
 use App\Model\Tag;
+use Illuminate\Support\Facades\Validator;
 
 class DrugController extends Controller
 {
@@ -24,6 +25,12 @@ class DrugController extends Controller
     }
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator, 'user')->withInput();
+        }
 		// dd($request->drug_code);
     	
     	$drug_code_check = count($this->model->where('drug_code', $request->drug_code)->get());

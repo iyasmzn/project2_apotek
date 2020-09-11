@@ -25,35 +25,40 @@
 	        					@csrf @method('PUT')
 	        					<div class="form-group">
 	        						<label for="name" class="col-sm-2 control-label">Name</label>
-	        						<div class="col-sm-8">
+	        						<div class="col-sm-6">
 	        							<input type="text" class="form-control1" name="name" id="name" placeholder="Username" value="{{ $user->name }}">
 	        						</div>
-	        						<div class="col-sm-2">
-	        							<p class="help-block" style="color: red;">Important!</p>
+	        						<div class="col-sm-4">
+	        							<p class="help-block" style="color: red;">{{ $errors->user->first('name') }}</p>
 	        						</div>
 	        					</div>
 	        					<div class="form-group">
 	        						<label for="focusedinputEmail" class="col-sm-2 control-label">Email</label>
-	        						<div class="col-sm-8">
+	        						<div class="col-sm-6">
 	        							<input type="text" class="form-control1" name="email" id="focusedinputEmail" placeholder="Email" value="{{ $user->email }}">
 	        						</div>
-	        						<div class="col-sm-2">
-	        							<p class="help-block" style="color: red;">Important!</p>
+	        						<div class="col-sm-4">
+	        							<p class="help-block" style="color: red;">{{ $errors->user->first('email') }}</p>
 	        						</div>
 	        					</div>
 	        					<div class="form-group">
+	        						<div class="col-sm-1">
+	        							<span class="btn btn-sm btn-danger" onclick='document.getElementById("Disabled_Input").style = "display: block";document.getElementById("Disabled_Input2").style = "display: block";'>New Password</span>
+	        						</div>
+	        					</div>
+	        					<div id="Disabled_Input" class="form-group" style="display: none;">
 	        						<label for="inputPassword" class="col-sm-2 control-label">New Password</label>
-	        						<div class="col-sm-8">
+	        						<div class="col-sm-6">
 	        							<input type="password" class="form-control1" id="inputPassword" placeholder="New Password" name="password">
 	        						</div>
 	        					</div>
-	        					<div class="form-group">
+	        					<div id="Disabled_Input2" class="form-group" style="display: none;">
 	        						<label for="inputPasswordconfirmation" class="col-sm-2 control-label">Confirm New Password</label>
-	        						<div class="col-sm-8">
+	        						<div class="col-sm-6">
 	        							<input type="password" class="form-control1" id="inputPasswordconfirmation" placeholder="New Password" disabled>
 	        						</div>
-	        						<div class="col-sm-2">
-	        							<p class="help-block" style="color: red;">Belum Bisa!</p>
+	        						<div class="col-sm-4">
+	        							<p class="help-block" style="color: red;">Belum Berfungsi!</p>
 	        						</div>
 	        					</div>
 	        					<div class="form-group">

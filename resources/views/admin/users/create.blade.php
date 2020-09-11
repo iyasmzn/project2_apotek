@@ -25,31 +25,34 @@
 	        					@csrf
 	        					<div class="form-group">
 	        						<label for="name" class="col-sm-2 control-label">Name</label>
-	        						<div class="col-sm-8">
-	        							<input type="text" class="form-control1" name="name" id="name" placeholder="Username">
+	        						<div class="col-sm-6">
+	        							<input type="text" class="form-control1" name="name" id="name" placeholder="Username" value="{{ old('name') }}">
 	        						</div>
-	        						<div class="col-sm-2">
-	        							<p class="help-block" style="color: red;">Important!</p>
+	        						<div class="col-sm-4">
+	        							<p class="help-block" style="color: red;">{{ $errors->user->first('name') }}</p>
 	        						</div>
 	        					</div>
 	        					<div class="form-group">
 	        						<label for="focusedinputEmail" class="col-sm-2 control-label">Email</label>
-	        						<div class="col-sm-8">
+	        						<div class="col-sm-6">
 	        							<input type="text" class="form-control1" name="email" id="focusedinputEmail" placeholder="Email">
 	        						</div>
-	        						<div class="col-sm-2">
-	        							<p class="help-block" style="color: red;">Important!</p>
+	        						<div class="col-sm-4">
+	        							<p class="help-block" style="color: red;">{{ $errors->user->first('email') }}</p>
 	        						</div>
 	        					</div>
 	        					<div class="form-group">
 	        						<label for="inputPassword" class="col-sm-2 control-label">Password</label>
-	        						<div class="col-sm-8">
+	        						<div class="col-sm-6">
 	        							<input type="password" class="form-control1" id="inputPassword" placeholder="Password" name="password">
+	        						</div>
+	        						<div class="col-sm-4">
+	        							<p class="help-block" style="color: red;">{{ $errors->user->first('password') }}</p>
 	        						</div>
 	        					</div>
 	        					<div class="form-group">
 	        						<label for="inputPasswordconfirmation" class="col-sm-2 control-label">Confirm Password</label>
-	        						<div class="col-sm-8">
+	        						<div class="col-sm-6">
 	        							<input type="password" class="form-control1" id="inputPasswordconfirmation" placeholder="Password" disabled>
 	        						</div>
 	        						<div class="col-sm-2">

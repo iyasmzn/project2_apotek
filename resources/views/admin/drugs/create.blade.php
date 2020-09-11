@@ -33,8 +33,11 @@
 	        					</div>
 	        					<div class="form-group">
 	        						<label for="name" class="col-sm-2 control-label" style="width: 120px;">Name</label>
-	        						<div class="col-sm-8">
-	        							<input type="text" class="form-control1" name="name" id="name" placeholder="Username">
+	        						<div class="col-sm-6">
+	        							<input type="text" class="form-control1" name="name" id="name" placeholder="Username" value="{{ old('name') }}">
+	        						</div>
+	        						<div class="col-sm-4">
+	        							<p class="help-block" style="color: red;">{{ $errors->user->first('name') }}</p>
 	        						</div>
 	        					</div>
 	        					<div class="form-group">
