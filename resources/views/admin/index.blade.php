@@ -49,7 +49,7 @@
 						</div>
 						<div class="comments-info views-info">
 							<h3>{{ count(DB::table('orders')->get()) }}</h3>
-							<a href="{{ route('admin.order.index') }}">Orders</a>
+							<a href="{{ route('admin.orders.index') }}">Orders</a>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
