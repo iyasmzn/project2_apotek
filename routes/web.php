@@ -34,11 +34,14 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function ()
 	Route::prefix('/users')->name('users.')->group(function ()
 	{
 		Route::get('/', 'UserController@index')->name('index');
+		Route::get('/trash', 'UserController@trash')->name('trash');
 		Route::get('/create', 'UserController@create')->name('create');
 		Route::post('/store', 'UserController@store')->name('store');
+		Route::get('/restore/{id}', 'UserController@restore')->name('restore');
 		Route::get('/edit/{id}', 'UserController@edit')->name('edit');
         Route::put('/update/{id}', 'UserController@update')->name('update');
         Route::delete('/delete/{id}', 'UserController@delete')->name('delete');
+		Route::delete('/forceDelete/{id}', 'UserController@forceDelete')->name('forceDelete');
 		Route::get('/view/{id}', 'UserController@view')->name('view');
 	});
 	Route::prefix('/tags')->name('tags.')->group(function ()

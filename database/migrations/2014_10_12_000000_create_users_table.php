@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->enum('role', ['admin','editor','employee'])->default('employee');
             $table->text('address')->nullable();
             $table->string('photo')->nullable();
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

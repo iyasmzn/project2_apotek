@@ -19,6 +19,11 @@ class UserController extends Controller
     	$users = $this->model->all();
     	return view('admin.users.index', compact('users'));
     }
+    public function trash()
+    {
+        $users = $this->model->onlyTrashed()->get();
+        return view('admin.users.trash', compact('users'));
+    }
     public function view($id)
     {
         $user = $this->model->find($id);
@@ -110,5 +115,15 @@ class UserController extends Controller
         if ($img && file_exists($fullPath)) {
             unlink($fullPath);
         }
+    }
+    public function restore($id)
+    {
+        $this->model->onlyTrashed()->find($id)->restore();
+        return redirect()->back();
+    }
+    public function forceDelete($id)
+    {
+        $this->model->onlyTrashed()->find($id)->forceDelete();
+        return redirect()->back();
     }
 }
