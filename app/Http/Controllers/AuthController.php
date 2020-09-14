@@ -44,6 +44,7 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|exists:users',
+            'password' => 'required',
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator, 'user')->withInput();
