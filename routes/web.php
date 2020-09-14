@@ -61,6 +61,9 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function ()
 		Route::get('/edit/{id}', 'DrugController@edit')->name('edit');
         Route::put('/update/{id}', 'DrugController@update')->name('update');
         Route::delete('/delete/{id}', 'DrugController@delete')->name('delete');
+		Route::get('/trash', 'DrugController@trash')->name('trash');
+		Route::get('/restore/{id}', 'DrugController@restore')->name('restore');
+		Route::delete('/forceDelete/{id}', 'DrugController@forceDelete')->name('forceDelete');
 	});
 	Route::prefix('/orders')->name('orders.')->group(function ()
 	{

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Drug;
 
 class OrderController extends Controller
 {
@@ -12,6 +13,7 @@ class OrderController extends Controller
     }
     public function create()
     {
-    	return view('admin.orders.create');
+    	$drugs = Drug::all();
+    	return view('admin.orders.create', compact('drugs'));
     }
 }

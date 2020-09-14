@@ -19,6 +19,11 @@ class DrugController extends Controller
     	$drugs = $this->model::orderBy('created_at', 'desc')->get();
     	return view('admin.drugs.index', compact('drugs'));
     }
+    public function trash()
+    {
+        $drugs = $this->model->onlyTrashed()->get();
+        return view('admin.drugs.trash', compact('drugs'));
+    }
     public function create()
     {
     	return view('admin.drugs.create');
@@ -105,6 +110,16 @@ class DrugController extends Controller
         $model->delete();
 
         return redirect(route('admin.drugs.index'));
+    }
+    public function restore($id)
+    {
+        $this->model->onlyTrashed()->find($id)->restore();
+        return redirect()->back();
+    }
+    public function forceDelete($id)
+    {
+        $this->model->onlyTrashed()->find($id)->forceDelete();
+        return redirect()->back();
     }
     public function uploadImage($request)
     {

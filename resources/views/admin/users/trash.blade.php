@@ -11,13 +11,12 @@
 	        <h2>
 	            <a href="{{ route('admin.users.index') }}">Users</a>
 	            <i class="fa fa-angle-right"></i>
-	            <span>List</span>
+	            <span>Trashed</span>
 	        </h2>
 	    </div>
 	    
 	    <div class="blank">
 	        <div class="blank-page">
-	        	<a href="{{ route('admin.users.create') }}" class="btn btn-md btn-info" style="margin-bottom: 20px;">Add New User</a>
 	            <table id="myTable">
 	            	<thead>
 	            		<tr>

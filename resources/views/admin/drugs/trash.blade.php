@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Drugs')
+@section('title', 'Drugs Trash')
 
 @section('content')
 	
@@ -9,24 +9,14 @@
 	    
 	    <div class="banner">
 	        <h2>
-	            <a href="index.html">Home</a>
+	            <a href="{{ route('admin.drugs.index') }}">Drugs</a>
 	            <i class="fa fa-angle-right"></i>
-	            <span>Blank</span>
+	            <span>Trashed</span>
 	        </h2>
 	    </div>
 	    
 	    <div class="blank">
 	        <div class="blank-page">
-	        	<div class="col-md-3">
-		        	<a href="{{ route('admin.drugs.create') }}" class="btn btn-md btn-info" style="margin-bottom: 20px;">Add Drug Data</a>        		
-	        	</div>
-	        	<div class="col-md-6"></div>
-	        	<div class="col-md-3" style="text-align: right;">	        		
-	        		<!-- @if(Auth::user()->role == 'admin') -->
-		        	<a href="{{ route('admin.drugs.trash') }}" class="btn btn-md btn-danger" style="margin-bottom: 20px;">View Trashed Data</a>
-		        	<!-- @endif -->
-	        	</div>
-
 	            <table id="myTable">
 	            	<thead>
 	            		<tr>
@@ -51,7 +41,7 @@
 	            				<td>{{ $drug->name }}</td>
 	            				<td style="text-align: center;">{{ $drug->stock }}</td>
 	            				<td style="text-align: center;">
-	            					<a href="/admin/drugs/edit/{{ $drug->id }}"><i class="fa fa-cogs"></i></a>
+	            					<a href="/admin/drugs/restore/{{ $drug->id }}"><i class="fa fa-arrow-left"></i></a>
 	            					<form action="/admin/drugs/delete/{{ $drug->id }}" method="post" style="display: inline-block;">
 	            						@csrf @method('DELETE')
 

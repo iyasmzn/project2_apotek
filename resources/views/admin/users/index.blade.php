@@ -17,7 +17,15 @@
 	    
 	    <div class="blank">
 	        <div class="blank-page">
-	        	<a href="{{ route('admin.users.create') }}" class="btn btn-md btn-info" style="margin-bottom: 20px;">Add New User</a>
+	        	<div class="col-md-3">
+		        	<a href="{{ route('admin.users.create') }}" class="btn btn-md btn-info" style="margin-bottom: 20px;">Add New User</a>        		
+	        	</div>
+	        	<div class="col-md-6"></div>
+	        	<div class="col-md-3" style="text-align: right;">	        		
+	        		@if(Auth::user()->role == 'admin')
+		        	<a href="{{ route('admin.users.trash') }}" class="btn btn-md btn-danger" style="margin-bottom: 20px;">View Trashed Data</a>
+		        	@endif
+	        	</div>
 	            <table id="myTable">
 	            	<thead>
 	            		<tr>
