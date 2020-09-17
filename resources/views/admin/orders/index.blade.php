@@ -22,16 +22,23 @@
 	            	<thead>
 	            		<tr>
 	            			<th style="width: 20px">No</th>
-	            			<th style="width: 100px">Photo</th>
-	            			<th>Name</th>
-	            			<th>Email</th>
-	            			<th style="width: 150px">Age</th>
-	            			<th>Role</th>
+	            			<th>Admin</th>
+	            			<th>Customer Name</th>
+	            			<th>Total</th>
 	            			<th>Action</th>
 	            		</tr>
 	            	</thead>
 	            	<tbody>
-
+						@php $no=1; @endphp
+	            		@foreach($orders as $order)
+	            		<tr>
+	            			<td>{{ $no++ }}</td>
+	            			<td>{{ $order->user->name }}</td>
+	            			<td>{{ $order->customer_name }}</td>
+	            			<td>{{ $order->total }}</td>
+	            			<td>Action</td>
+            			</tr>
+	            		@endforeach
 	            	</tbody>
 	            </table>
 	        </div>
