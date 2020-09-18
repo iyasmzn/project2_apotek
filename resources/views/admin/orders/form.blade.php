@@ -1,6 +1,6 @@
 @php
 	$isEdit = isset($order);
-	$method = $isEdit ? method('PUT') : null;
+	$method = $isEdit ? method_field('PUT') : null;
 	$action = $isEdit ? route('admin.orders.update', $order->id) : route('admin.orders.store');
 @endphp
 
@@ -29,7 +29,7 @@
 	        			<div class="form-three widget-shadow">
 	        				<form action="{{ $action }}" method="post">
 	        					@csrf {{ $method }}
-	        					<div x-data="instance()">
+	        					<div x-data="instance()" x-init="() => { initSelect() }">
 	        						<div>
 	        							Admin
 	        							<input type="hidden" name="user_id" value="{{ Auth::user()->id }}" readonly>
@@ -44,7 +44,7 @@
 	        							<div style="margin: 20px 0px;">
 	        								<label>
 	        									Item
-	        									<select name="drug_id[]" style="padding: 5px;" x-model="row.drug_id" x-on:change="setPrice(row.drug_id, index)">
+	        									<select class="drug-select" :class=" 'row' + index " name="drug_id[]" x-model="row.drug_id" x-on:change="setPrice(row.drug_id, index)"  style="padding: 5px;display: none;">
 
 	        										<option>~ Choose Item ~</option>
 	        										@foreach ($drugs as $item)
@@ -98,6 +98,8 @@
 	
 
 	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 	<script type="text/javascript">
 		function instance() {
 			const initialRow = {drug_id: null, qty: 0, price: 0, subtotal: 0}; 
@@ -114,8 +116,20 @@
 					customer_name: '',
 				@endif
 				//methods
+				
+				initSelect() {
+					$('.drug-select').select2();
+
+					this.rows.forEach( (row, index) => {
+						$( '.row' + index ).on( 'select2:select', e => {
+							row.drug_id = e.target.value;
+							this.setPrice(row.drug_id, index);
+						} );
+					} );
+				},
 				addRow() {
-					this.rows.push( Object.assign({}, initialRow) ); 
+					this.rows.push( Object.assign({}, initialRow) );
+					this.$nextTick( () => { this.initSelect() } ); 
 				},
 				removeRow() {
 					this.rows.pop(); 

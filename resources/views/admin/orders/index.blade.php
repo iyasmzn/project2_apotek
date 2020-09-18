@@ -22,8 +22,8 @@
 	            	<thead>
 	            		<tr>
 	            			<th style="width: 20px">No</th>
-	            			<th>Admin</th>
-	            			<th>Customer Name</th>
+	            			<th style="text-align: left;">Admin</th>
+	            			<th style="text-align: left;">Customer Name</th>
 	            			<th>Total</th>
 	            			<th>Action</th>
 	            		</tr>
@@ -35,8 +35,15 @@
 	            			<td>{{ $no++ }}</td>
 	            			<td>{{ $order->user->name }}</td>
 	            			<td>{{ $order->customer_name }}</td>
-	            			<td>{{ $order->total }}</td>
-	            			<td>Action</td>
+	            			<td style="text-align: center;">{{ $order->total }}</td>
+	            			<td style="text-align: center;">
+            					<a href="{{ route('admin.orders.edit', $order->id) }}"><i class="fa fa-cogs"></i></a>
+            					<form action="{{ route('admin.orders.destroy', $order->id) }}" method="post" style="display: inline-block;">
+            						@csrf @method('DELETE')
+
+	            					<button style="color: red;font-size: 1.3em;background-color: white;border: none;"><i class="fa fa-trash-o" style="transform: translateY(-2px);"></i></button>	            						
+            					</form>
+	            			</td>
             			</tr>
 	            		@endforeach
 	            	</tbody>

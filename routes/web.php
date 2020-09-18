@@ -65,13 +65,14 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function ()
 		Route::get('/restore/{id}', 'DrugController@restore')->name('restore');
 		Route::delete('/forceDelete/{id}', 'DrugController@forceDelete')->name('forceDelete');
 	});
-	Route::prefix('/orders')->name('orders.')->group(function ()
-	{
-		Route::get('/', 'OrderController@index')->name('index');
-		Route::get('/create', 'OrderController@create')->name('create');
-		Route::post('/store', 'OrderController@store')->name('store');
-		Route::get('/edit/{id}', 'OrderController@edit')->name('edit');
-        Route::put('/update/{id}', 'OrderController@update')->name('update');
-        Route::delete('/delete/{id}', 'OrderController@delete')->name('delete');
-	});
+	// Route::prefix('/orders')->name('orders.')->group(function ()
+	// {
+	// 	Route::get('/', 'OrderController@index')->name('index');
+	// 	Route::get('/create', 'OrderController@create')->name('create');
+	// 	Route::post('/store', 'OrderController@store')->name('store');
+	// 	Route::get('/edit/{id}', 'OrderController@edit')->name('edit');
+ //        Route::put('/update/{id}', 'OrderController@update')->name('update');
+ //        Route::delete('/delete/{id}', 'OrderController@delete')->name('delete');
+	// });
+	Route::resource('/orders', OrderController::class);
 });

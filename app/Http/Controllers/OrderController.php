@@ -42,10 +42,10 @@ class OrderController extends Controller
     public function edit($id)
     {
         $order = Order::with('order_details')->find($id);
-        $items = Item::all();
+        $drugs = Drug::all();
         // dd($order->toArray());
 
-        return view('order.form', compact('order', 'items'));
+        return view('admin.orders.form', compact('order', 'drugs'));
     }
     public function update(Request $request, $id)
     {
@@ -65,7 +65,7 @@ class OrderController extends Controller
             ]);
         }
 
-        return redirect(route('order.index'));
+        return redirect(route('admin.orders.index'));
 
     }
     public function destroy($id)
@@ -75,6 +75,6 @@ class OrderController extends Controller
         $order->order_details()->delete();
         $order->delete();
 
-        return redirect(route('order.index'));
+        return redirect(route('admin.orders.index'));
     }
 }
