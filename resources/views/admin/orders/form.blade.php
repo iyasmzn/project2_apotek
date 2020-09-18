@@ -30,23 +30,24 @@
 	        				<form action="{{ $action }}" method="post">
 	        					@csrf {{ $method }}
 	        					<div x-data="instance()" x-init="() => { initSelect() }">
-	        						<div>
-	        							Admin
-	        							<input type="hidden" name="user_id" value="{{ Auth::user()->id }}" readonly>
-	        							<h1>{{ Auth::user()->name }}</h1>
+	        						<div style="display: flex;justify-content: space-between;">
+		        						<label>
+		        							Customer Name
+		        							<input type="text" name="customer_name" x-model="customer_name">
+		        						</label>
+		        						<label>
+		        							<input type="hidden" name="user_id" value="{{ Auth::user()->id }}" readonly>
+		        							<span><b style="font-size: 1.3em">{{ Str::title(Auth::user()->name) }}</b></span>
+		        						</label>
 	        						</div>
-	        						<label>
-	        							Customer Name
-	        							<input type="text" name="customer_name" x-model="customer_name">
-	        						</label>
 	        						<br><br>
 	        						<template x-for="(row, index) in rows" :key="row">
 	        							<div style="margin: 20px 0px;">
 	        								<label>
-	        									Item
+	        									Drugs
 	        									<select class="drug-select" :class=" 'row' + index " name="drug_id[]" x-model="row.drug_id" x-on:change="setPrice(row.drug_id, index)"  style="padding: 5px;display: none;">
 
-	        										<option>~ Choose Item ~</option>
+	        										<option>~ Choose Drug Item ~</option>
 	        										@foreach ($drugs as $item)
 	        										<option value="{{ $item->id }}">{{ $item->name }}</option>
 	        										@endforeach
@@ -56,24 +57,24 @@
 	        								&nbsp;&nbsp;&nbsp;&nbsp;
 	        								<label>
 	        									Qty
-	        									<input type="number" name="qty[]" x-model="row.qty" value="" x-on:change="setSubtotal(index)">
+	        									<input type="number" name="qty[]" x-model="row.qty" value="" x-on:change="setSubtotal(index)" style="padding: 5px;width: 40px;">
 	        								</label>
 	        								&nbsp;&nbsp;&nbsp;&nbsp;
 	        								<label>
 	        									Price/pcs
-	        									<input type="number" name="price[]" x-model="row.price" value="" readonly>
+	        									<input type="number" name="price[]" x-model="row.price" value="" readonly style="width: 40px;padding: 5px;">
 	        								</label>
 	        								&nbsp;&nbsp;&nbsp;&nbsp;
 	        								<label>
 	        									Subtotal
 	        									<input type="number" name="subtotal[]" x-model="row.subtotal" value="" readonly>
 	        								</label>
+			        						<button type="button" x-on:click="removeRow(index)" class="btn btn-md btn-danger"><i class="fa fa-trash-o"></i></button>
 	        							</div>
 	        						</template>
 
 	        						<br><br>
-	        						<button style="padding: 15px 35px;font-size: 1.1em" type="button" x-on:click="removeRow">- Delete</button>
-	        						<button style="padding: 15px 35px;font-size: 1.1em" type="button" x-on:click="addRow">+ Add</button>
+	        						<button class="btn btn-md btn-info" type="button" x-on:click="addRow">More Item</button>
 
 	        						<hr>
 
@@ -101,6 +102,28 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 	<script type="text/javascript">
+		function forms() {
+			const initialRow = { drug_id: null, qty: 0, price: 0, subtotal: 0 };
+			const drugs = @json($drugs);
+			return {
+				@if($isEdit)
+					rows: @json($order->order_details),
+					total: {{ $order->total }},
+					customer_name: '{{ $order->customer_name }}',
+				@else
+					rows: [ Object.assign( {}, initialRow ) ],
+					total: 0,
+					customer_name: null,
+				@endif
+
+				drugSelect() {
+					$('.drug-select').select2();
+					this.rows.forEach( (row, index) => {
+						$('row' + index)
+					} );
+				},
+			}
+		}
 		function instance() {
 			const initialRow = {drug_id: null, qty: 0, price: 0, subtotal: 0}; 
 			const items = @json($drugs);
@@ -131,8 +154,8 @@
 					this.rows.push( Object.assign({}, initialRow) );
 					this.$nextTick( () => { this.initSelect() } ); 
 				},
-				removeRow() {
-					this.rows.pop(); 
+				removeRow(index) {
+					this.rows.splice(index, 1); 
 
 					this.setTotal();
 				},
