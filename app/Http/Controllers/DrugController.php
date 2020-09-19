@@ -56,13 +56,15 @@ class DrugController extends Controller
 
             $drug_id=$this->model->where('drug_code', $request->drug_code)->first()->Tag();
             // dd($article->id);
-            $tags = $request->tags;
-            if ($this->model) {
-                foreach ($tags as $tag) {
-                    Tag::firstOrCreate(['name'=> $tag]);
-                }
-                $idk = Tag::whereIn('name', $tags)->get()->pluck('id');
-                $drug_id->sync($idk);
+            if ($request->tags) {
+                $tags = $request->tags;
+                if ($this->model) {
+                    foreach ($tags as $tag) {
+                        Tag::firstOrCreate(['name'=> $tag]);
+                    }
+                    $idk = Tag::whereIn('name', $tags)->get()->pluck('id');
+                    $drug_id->sync($idk);
+                }   
             }
     		return redirect('/admin/drugs/');
     	}
@@ -92,13 +94,15 @@ class DrugController extends Controller
             $this_drug->update($request->all());
 
             // dd($article->id);
-            $tags = $request->tags;
-            if ($this->model) {
-                foreach ($tags as $tag) {
-                    Tag::firstOrCreate(['name'=> $tag]);
-                }
-                $idk = Tag::whereIn('name', $tags)->get()->pluck('id');
-                $this_drug->Tag()->sync($idk);
+            if ($request->tags) {
+                $tags = $request->tags;
+                if ($this->model) {
+                    foreach ($tags as $tag) {
+                        Tag::firstOrCreate(['name'=> $tag]);
+                    }
+                    $idk = Tag::whereIn('name', $tags)->get()->pluck('id');
+                    $this_drug->Tag()->sync($idk);
+                }   
             }
             return redirect('/admin/drugs/');
         }
