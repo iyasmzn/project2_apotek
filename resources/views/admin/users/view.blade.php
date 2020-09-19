@@ -55,7 +55,7 @@
 	        			<tr>
 	        				<td><span style="color: gray;font-size: 1em;padding-right: 20px;">Birth Date</span></td>
 	        				<td>
-				        		<h3 style="margin: 5px 0px;color: rgb(0,188,212)">{{ $user->born_date }} </h3>
+				        		<h3 style="margin: 5px 0px;color: rgb(0,188,212)">{{ date('F jS, Y', strtotime($user->born_date)) }} </h3>
 	        				</td>
 	        			</tr>
 	        			<tr>

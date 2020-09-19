@@ -36,7 +36,7 @@
 	            		<tr>
 	            			<td>{{ $no++ }}</td>
 	            			<td>{{ date('l, F jS, Y', strtotime($order->created_at)) }}</td>
-	            			<td>{{ date('H:i:s A', strtotime($order->created_at)) }}</td>
+	            			<td style="text-align: center;">{{ date('H:i:s A', strtotime($order->created_at)) }}</td>
 	            			<td>{{ Str::title($order->user->name) }}</td>
 	            			<td>{{ Str::title($order->customer_name) }}</td>
 	            			<td style="text-align: center;">Rp, {{ number_format("$order->total",2,",",".") }}</td>
