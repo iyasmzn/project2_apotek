@@ -78,7 +78,7 @@
 	        			</tr>
 	        		</table>
 
-	        		<a href="/admin/users/edit/{{ $user->id }}" class="btn btn-danger">Edit Profile</a>
+	        		<a href="/admin/users/edit/{{ $user->id }}/fromView" class="btn btn-danger">Edit Profile</a>
 	        	</div>
 	        </div>
 	   </div>

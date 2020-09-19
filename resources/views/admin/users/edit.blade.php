@@ -87,6 +87,9 @@
 	        							<p style="color: red">Max size is 2048KiB</p>
 	        						</div>
 	        					</div>
+	        					@if(isset($fromView))
+	        						<input type="text" name="fromView" value="formView">
+	        					@endif
 	        					<div class="form-group" style="text-align: center;margin-top: 30px">
 	        						<input type="submit" value="SUBMIT" class="btn btn-lg btn-success">
 	        					</div>

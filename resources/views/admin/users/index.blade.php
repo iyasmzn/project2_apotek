@@ -18,7 +18,9 @@
 	    <div class="blank">
 	        <div class="blank-page">
 	        	<div class="col-md-3">
+	        		@if(Auth::user()->role == 'admin')
 		        	<a href="{{ route('admin.users.create') }}" class="btn btn-md btn-info" style="margin-bottom: 20px;">Add New User</a>        		
+		        	@endif
 	        	</div>
 	        	<div class="col-md-6"></div>
 	        	<div class="col-md-3" style="text-align: right;">	        		

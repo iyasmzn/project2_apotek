@@ -111,7 +111,6 @@
 			return {
 				@if($isEdit)
 					rows: @json($order->order_details),
-					// rows2: console.log([ Object.assign( initialRow2, orderss ) ]),
 					total: {{ $order->total }},
 					showtotal: 'Rp, ' + new Number({{ $order->total }}).toLocaleString("id-ID") + ',00',
 					customer_name: '{{ $order->customer_name }}',

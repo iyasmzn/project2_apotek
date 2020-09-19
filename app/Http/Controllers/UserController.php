@@ -61,6 +61,12 @@ class UserController extends Controller
         $user = $this->model->find($id);
         return view(('admin.users.edit'), compact('user'));
     }
+    public function edit2($id, $fromView)
+    {
+        // $this->authorize('update', $this->model);
+        $user = $this->model->find($id);
+        return view(('admin.users.edit'), compact('user'))->with($fromView, 'fromView');
+    }
     public function update(Request $request, $id)
     {
 
@@ -88,6 +94,10 @@ class UserController extends Controller
             ]);
         }
         $model->update($request->all());
+        if (isset($request->fromView)) {
+            $user = $model;
+            return view('admin.users.view', compact('user'));
+        }
         return redirect(route('admin.users.index'));
     }
     public function delete($id)
