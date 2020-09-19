@@ -56,7 +56,7 @@
 	        								</label>
 	        								<label style="color: darkgrey;margin-right: 20px">
 	        									Qty
-	        									<input type="number" name="qty[]" x-model="row.qty" value="" x-on:change="setSubtotal(index)" min="0" style="padding: 5px;width: 70px;color: black">
+	        									<input class="qty-max" type="number" name="qty[]" x-model="row.qty" value="" x-on:change="setSubtotal(index)" min="0" style="padding: 5px;width: 70px;color: black">
 	        								</label>
 	        								<label style="color: darkgrey;margin-right: 20px">
 	        									Price
@@ -142,6 +142,7 @@
 				setPrice(id, index) {
 					const drug = drugs.find( item => item.id == id );
 					const result = drug && drug.price; 
+					$(".qty-max").attr("max", drug.stock);
 					this.rows[index].price = result;
 					this.rows[index].showprice = 'Rp ' + result.toLocaleString("id-ID") + ',00 /pcs';
 					this.setSubtotal(index);

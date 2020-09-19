@@ -15,7 +15,7 @@ class OrderController extends Controller
     }
     public function create()
     {
-    	$drugs = Drug::all();
+    	$drugs = Drug::where('stock', '>' ,'0')->get();
     	return view('admin.orders.form', compact('drugs'));
     }
     public function store(Request $request)
