@@ -96,7 +96,8 @@ class UserController extends Controller
         $model->update($request->all());
         if (isset($request->fromView)) {
             $user = $model;
-            return view('admin.users.view', compact('user'));
+            return redirect(route('admin.users.view', $user->id));
+            // return view('admin.users.view', compact('user'));
         }
         return redirect(route('admin.users.index'));
     }
