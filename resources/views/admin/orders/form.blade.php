@@ -34,6 +34,8 @@
 		        						<label style="color: darkgrey">
 		        							Customer Name
 		        							<input type="text" name="customer_name" x-model="customer_name" style="border: none;border-bottom: 2px solid rgb(0,188,212);margin-left: 10px;padding: 3px 10px;">
+		        							<span style="font-size: 0.9em;color: tomato;">{{ $errors->order->first('customer_name') }}</span>
+
 		        						</label>
 		        						<label>
 		        							<input type="hidden" name="user_id" value="{{ Auth::user()->id }}" readonly>
@@ -48,8 +50,8 @@
 	        									<select class="drug-select" :class=" 'row' + index " name="drug_id[]" x-model="row.drug_id" x-on:change="setPrice(row.drug_id, index)"  style="padding: 5px;display: none;">
 
 	        										<option>~ Choose Drug Item ~</option>
-	        										@foreach ($drugs as $item)
-	        										<option value="{{ $item->id }}">{{ $item->name }}</option>
+	        										@foreach ($drugs as $drug)
+	        										<option value="{{ $drug->id }}">{{ $drug->name }}</option>
 	        										@endforeach
 	        									</select>
 	        									<!-- <span x-text="row.drug_id"></span> -->

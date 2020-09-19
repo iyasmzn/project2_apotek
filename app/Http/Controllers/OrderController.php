@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Model\Drug;
 use App\Model\Order;
 
@@ -22,6 +23,13 @@ class OrderController extends Controller
     {
     	// dd($request->qty);
         // Order::create($request->only('customer_name'));
+
+        $validator = Validator::make($request->all(), [
+            'customer_name' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator, 'order')->withInput();
+        }
 
         $order = Order::create([
             'user_id' => 1,
