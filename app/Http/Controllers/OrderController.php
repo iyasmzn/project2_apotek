@@ -22,19 +22,12 @@ class OrderController extends Controller
     {
     	// dd($request->qty);
         // Order::create($request->only('customer_name'));
+
         $order = Order::create([
             'user_id' => 1,
             'customer_name' => $request->customer_name,
             'total' => $request->total,
         ]);
-        $drugs = Drug::find($request->drug_id);
-        foreach ($drugs as $drug) {
-            $updateStock = intval($drug->stock) - intval($request->qty);
-            dd($updateStock);
-            $drug->update([
-                'stock' => $updateStock,
-            ]);
-        }
         for ($i=0; $i < count($request->drug_id); $i++) { 
             $order->order_details()->create([
                 'drug_id' => $request->drug_id[$i],
@@ -42,6 +35,15 @@ class OrderController extends Controller
                 'price' => $request->price[$i],
                 'subtotal' => $request->subtotal[$i],
             ]);
+
+            $drugs = Drug::find($request->drug_id);
+            foreach ($drugs as $drug) {
+                $updateStock = $drug->stock - $request->qty[$i];
+                // dd($updateStock);
+                $drug->update([
+                    'stock' => $updateStock,
+                ]);
+            }
         }
 
         return redirect(route('admin.orders.index'));
