@@ -33,9 +33,9 @@
 	            		@foreach($orders as $order)
 	            		<tr>
 	            			<td>{{ $no++ }}</td>
-	            			<td>{{ $order->user->name }}</td>
-	            			<td>{{ $order->customer_name }}</td>
-	            			<td style="text-align: center;">{{ $order->total }}</td>
+	            			<td>{{ Str::title($order->user->name) }}</td>
+	            			<td>{{ Str::title($order->customer_name) }}</td>
+	            			<td style="text-align: center;">Rp, {{ number_format("$order->total",2,",",".") }}</td>
 	            			<td style="text-align: center;">
             					<a href="{{ route('admin.orders.edit', $order->id) }}"><i class="fa fa-cogs"></i></a>
             					<form action="{{ route('admin.orders.destroy', $order->id) }}" method="post" style="display: inline-block;">
