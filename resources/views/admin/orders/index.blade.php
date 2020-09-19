@@ -22,6 +22,8 @@
 	            	<thead>
 	            		<tr>
 	            			<th style="width: 20px">No</th>
+	            			<th style="text-align: left;">Transaction Date</th>
+	            			<th>Time</th>
 	            			<th style="text-align: left;">Admin</th>
 	            			<th style="text-align: left;">Customer Name</th>
 	            			<th>Total</th>
@@ -33,6 +35,8 @@
 	            		@foreach($orders as $order)
 	            		<tr>
 	            			<td>{{ $no++ }}</td>
+	            			<td>{{ date('l, F jS, Y', strtotime($order->created_at)) }}</td>
+	            			<td>{{ date('H:i:s A', strtotime($order->created_at)) }}</td>
 	            			<td>{{ Str::title($order->user->name) }}</td>
 	            			<td>{{ Str::title($order->customer_name) }}</td>
 	            			<td style="text-align: center;">Rp, {{ number_format("$order->total",2,",",".") }}</td>
