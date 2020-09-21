@@ -63,12 +63,12 @@
 	        								<label style="color: darkgrey;margin-right: 20px">
 	        									Price
 	        									<input type="number" name="price[]" x-model="row.price" value="" readonly style="width: 140px;padding: 5px;display: none;">
-	        									<input class="rupiah" type="text" x-model="{{ $isEdit ? 'row.price' : 'row.showprice' }}" value="" placeholder="Rp. 0,00 /pcs" readonly style="width: 140px;padding: 5px;border: none;border-bottom: 1px solid gray;color: black">
+	        									<input class="rupiah" type="text" x-model="{{ $isEdit ? 'row.price' : 'row.showprice' }}" value="" placeholder="Rp. 0,00 /pcs" readonly style="width: 140px;padding: 5px;border: none;border-bottom: 1px solid gray;color: black"> {{ $isEdit ? '/pcs' : '' }}
 	        								</label>
 	        								<label style="color: darkgrey;margin-right: 20px">
 	        									Subtotal
 	        									<input type="number" name="subtotal[]" x-model="row.subtotal" value="" readonly style="display: none;">
-	        									<input class="rupiahsub" type="text" x-model="{{ $isEdit ? 'row.subtotal' : 'row.showsubtotal' }}" value="" placeholder="Rp. 0,00 " readonly style="width: 140px;padding: 5px;border: none;border-bottom: 1px solid gray;color: black">
+	        									<input class="rupiahsub" type="text" x-model="{{ $isEdit ? 'row.subtotal' : 'row.showsubtotal' }}" value="" placeholder="Rp. 0,00 " readonly style="width: 140px;padding: 5px;border: none;border-bottom: 1px solid gray;color: black"> 
 	        								</label>
 			        						<button type="button" x-on:click="removeRow(index)" class="btn btn-md btn-danger"><i class="fa fa-trash-o"></i></button>
 	        							</div>

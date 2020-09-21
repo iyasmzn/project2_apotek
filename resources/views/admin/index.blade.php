@@ -64,6 +64,7 @@
 				</div>
 				<div class="clearfix"> </div>
 			</div>
+			<canvas id="myChart" width="100" height="100"></canvas>
 		</div>
 
 @endsection
