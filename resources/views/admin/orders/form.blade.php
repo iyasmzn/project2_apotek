@@ -47,7 +47,7 @@
 	        							<div style="margin: 20px 0px;">
 	        								<label style="color: darkgrey;margin-right: 20px">
 	        									Drugs
-	        									<select class="drug-select" :class=" 'row' + index " name="drug_id[]" x-model="row.drug_id" x-on:change="setPrice(row.drug_id, index)"  style="padding: 5px;display: none;">
+	        									<select class="drug-select" :class=" 'drug' + index " name="drug_id[]" x-model="row.drug_id" x-on:change="setPrice(row.drug_id, index)"  style="padding: 5px;display: none;">
 
 	        										<option>~ Choose Drug Item ~</option>
 	        										@foreach ($drugs as $drug)
@@ -105,11 +105,7 @@
 	<script type="text/javascript">
 		function ordering() {
 			const initialRow = { drug_id: null, qty: 0, price: 0, subtotal: 0 };
-			const initialRow2 = { drug_id: null, qty: 0, price: 0, subtotal: 0 };
 			const drugs = @json($drugs);
-			@if($isEdit)
-				const orderss = @json($order->order_details);
-			@endif
 			return {
 				@if($isEdit)
 					rows: @json($order->order_details),
@@ -126,13 +122,19 @@
 				drugSelect() {
 					$('.drug-select').select2();
 					this.rows.forEach( (row, index) => {
-						$('.row' + index).on('select2:select', e => {
+						$('.drug' + index).on('select2:select', e => {
 							row.drug_id = e.target.value;
 							this.setPrice(row.drug_id, index);
 							const drug = drugs.find( drug => drug.id == row.drug_id );
 							// console.log(drug);
 							$(".qty" + index).attr("max", drug.stock);
 						});
+						@if($isEdit)
+							const drug = drugs.find( drug => drug.id == row.drug_id );
+							drug.stock = drug.stock + row.qty;
+							console.log(drug.stock);
+							$(".qty" + index).attr("max", drug.stock);						
+						@endif
 
 					});
 				},

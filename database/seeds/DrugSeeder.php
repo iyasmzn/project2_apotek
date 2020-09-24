@@ -20,7 +20,7 @@ class DrugSeeder extends Seeder
         		'drug_code' => uniqid(),
         		'name' => $fake->word(),
         		'type' => array_rand($type,1),
-        		'stock' => rand(0,200),
+        		'stock' => rand(0,50),
         		'exp_date' => $fake->dateTimeBetween($startDate='now', $endDate='+10 years', $timezone = null),
         		'price' => rand(5000, 100000),
         	]);
