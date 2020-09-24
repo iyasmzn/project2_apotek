@@ -62,9 +62,14 @@
 						</div>
 					</a>
 				</div>
+				<div class="col-md-3 top-comment-grid">
+					
+				</div>
+				<div class="col-md-3 top-comment-grid">
+					<canvas id="myChart" style="width: 150px;height: 150px;"></canvas>					
+				</div>
 				<div class="clearfix"> </div>
 			</div>
-			<canvas id="myChart" width="100" height="100"></canvas>
 		</div>
 
 @endsection

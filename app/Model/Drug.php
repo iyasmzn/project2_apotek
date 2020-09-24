@@ -9,7 +9,7 @@ class Drug extends Model
 {
 	use SoftDeletes;    
     protected $fillable = [
-        'drug_code', 'name', 'type', 'stock', 'exp_date', 'price', 'information', 'image',
+        'drug_code', 'name', 'type', 'stock', 'exp_date', 'price', 'information', 'image', 'sold',
     ];
 
     public function Tag()

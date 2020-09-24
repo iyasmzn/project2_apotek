@@ -23,6 +23,7 @@ class CreateDrugsTable extends Migration
             $table->integer('price');
             $table->text('information')->nullable();
             $table->string('image')->nullable();
+            $table->integer('sold')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

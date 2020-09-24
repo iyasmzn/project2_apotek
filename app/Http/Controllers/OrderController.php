@@ -44,14 +44,14 @@ class OrderController extends Controller
                 'subtotal' => $request->subtotal[$i],
             ]);
 
-            $drugs = Drug::find($request->drug_id);
-            foreach ($drugs as $drug) {
-                $updateStock = $drug->stock - $request->qty[$i];
-                // dd($updateStock);
-                $drug->update([
-                    'stock' => $updateStock,
-                ]);
-            }
+            $drugs = Drug::find($request->drug_id[$i]);
+            $updateStock = $drugs->stock - $request->qty[$i];
+            $sold = $drugs->sold + $request->qty[$i];
+            $drugs->update([
+                'stock' => $updateStock,
+                'sold' => $sold,
+            ]);
+                // dd($drugs->sold . $drugs->name);
         }
 
         return redirect(route('admin.orders.index'));
