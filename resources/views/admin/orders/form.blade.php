@@ -33,7 +33,7 @@
 	        						<div style="display: flex;justify-content: space-between;">
 		        						<label style="color: darkgrey">
 		        							Customer Name
-		        							<input type="text" name="customer_name" x-model="customer_name" style="border: none;border-bottom: 2px solid rgb(0,188,212);margin-left: 10px;padding: 3px 10px;">
+		        							<input type="text" name="customer_name" x-model="customer_name" style="border: none;border-bottom: 2px solid rgb(0,188,212);margin-left: 10px;padding: 3px 10px;" required>
 		        							<span style="font-size: 0.9em;color: tomato;">{{ $errors->order->first('customer_name') }}</span>
 
 		        						</label>
