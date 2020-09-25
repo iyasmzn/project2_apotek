@@ -1,6 +1,6 @@
 <section class="title-bar">
             <div class="logo">
-                <h1><a href="{{ route('admin.home') }}"><img src="/colored/images/logo.png" alt="" />KAOPET</a></h1>
+                <h1><a href="{{ route('admin.home') }}"><img src="/colored/images/logo.png" alt="" /><!-- KAOPET -->COLORED</a></h1>
             </div>
             <div class="full-screen">
                 <section class="full-top">

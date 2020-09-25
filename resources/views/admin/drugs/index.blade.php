@@ -11,7 +11,7 @@
 	        <h2>
 	            <a href="index.html">Home</a>
 	            <i class="fa fa-angle-right"></i>
-	            <span>Blank</span>
+	            <span>Drugs List</span>
 	        </h2>
 	    </div>
 	    

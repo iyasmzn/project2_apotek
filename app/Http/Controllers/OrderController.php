@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use App\Model\Drug;
 use App\Model\Order;
 
@@ -32,7 +33,7 @@ class OrderController extends Controller
         }
 
         $order = Order::create([
-            'user_id' => 1,
+            'user_id' => $request->user_id,
             'customer_name' => $request->customer_name,
             'total' => $request->total,
         ]);
@@ -67,9 +68,20 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         $order = Order::find($id);
+        $oodd = DB::table('order_details')->where('order_id', $id)->get();
+        // dd($oodd[0]->qty);
+        foreach ($oodd as $orderer) {
+            $drugg = Drug::find($orderer->drug_id);
+            $drugg->update([
+                'stock' => $drugg->stock + $orderer->qty,
+                'sold' => $drugg->sold - $orderer->qty,
+            ]);
+        }
+
         $order->order_details()->delete();
         
         $order->update([
+            'user_id' => $request->user_id,
             'customer_name' => $request->customer_name,
             'total' => $request->total,
         ]);
@@ -79,6 +91,14 @@ class OrderController extends Controller
                 'qty' => $request->qty[$i],
                 'price' => $request->price[$i],
                 'subtotal' => $request->subtotal[$i],
+            ]);
+
+            $drugs = Drug::find($request->drug_id[$i]);
+            $updateStock = $drugs->stock - $request->qty[$i];
+            $sold = $drugs->sold + $request->qty[$i];
+            $drugs->update([
+                'stock' => $updateStock,
+                'sold' => $sold,
             ]);
         }
 
