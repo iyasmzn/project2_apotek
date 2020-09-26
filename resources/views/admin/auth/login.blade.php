@@ -41,7 +41,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					@if(Session::has('error'))
 					<span style="color: red">{{ Session::get('error')  }}</span>
 					@endif
-
+					<br><br>
+					<label>
+						<input type="checkbox" name="remember">
+						Remember Me
+					</label>
 					<input type="submit" class="register" value="Login">
 				</form>
 				<div class="signin-text">

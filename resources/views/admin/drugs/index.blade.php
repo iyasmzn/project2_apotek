@@ -35,6 +35,7 @@
 	            			<th style="width: 100px">Image</th>
 	            			<th style="text-align: left;">Name</th>
 	            			<th>Stock</th>
+	            			<th style="text-align: left;">Exp Date (Y, m/d)</th>
 	            			<th>Action</th>
 	            		</tr>
 	            	</thead>
@@ -50,6 +51,7 @@
 	            				</td>
 	            				<td>{{ $drug->name }}</td>
 	            				<td style="text-align: center;">{{ $drug->stock }}</td>
+	            				<td>{{ date('Y, m/d', strtotime($drug->exp_date)) }}</td>
 	            				<td style="text-align: center;">
 	            					<a href="/admin/drugs/edit/{{ $drug->id }}"><i class="fa fa-cogs"></i></a>
 	            					<form action="/admin/drugs/delete/{{ $drug->id }}" method="post" style="display: inline-block;">

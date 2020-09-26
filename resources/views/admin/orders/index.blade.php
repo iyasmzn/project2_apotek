@@ -24,7 +24,7 @@
 	            			<th style="width: 20px">No</th>
 	            			<th style="text-align: left;">Transaction Date</th>
 	            			<th>Time</th>
-	            			<th style="text-align: left;">Admin</th>
+	            			<th style="text-align: left;">Created By</th>
 	            			<th style="text-align: left;">Customer Name</th>
 	            			<th>Total</th>
 	            			<th>Action</th>
@@ -40,6 +40,7 @@
 	            			<td>{{ Str::title($order->user->name) }}</td>
 	            			<td>{{ Str::title($order->customer_name) }}</td>
 	            			<td style="text-align: center;">Rp, {{ number_format("$order->total",2,",",".") }}</td>
+	            			@if(Auth::user()->role == 'admin' || Auth::user()->id == $order->user_id)
 	            			<td style="text-align: center;">
             					<a href="{{ route('admin.orders.edit', $order->id) }}"><i class="fa fa-cogs"></i></a>
             					<form action="{{ route('admin.orders.destroy', $order->id) }}" method="post" style="display: inline-block;">
@@ -47,7 +48,10 @@
 
 	            					<button style="color: red;font-size: 1.3em;background-color: white;border: none;"><i class="fa fa-trash-o" style="transform: translateY(-2px);"></i></button>	            						
             					</form>
-	            			</td>
+	            			@else
+	            				<p style="text-align: center;color: red">Can't edit other with this user</p>
+	            			</td> 
+	            			@endif
             			</tr>
 	            		@endforeach
 	            	</tbody>

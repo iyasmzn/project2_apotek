@@ -42,6 +42,7 @@ class AuthController extends Controller
     }
     public function loginProcess(Request $request)
     {
+        // dd($request->remember);
         $validator = Validator::make($request->all(), [
             'name' => 'required|exists:users',
             'password' => 'required',
@@ -50,7 +51,7 @@ class AuthController extends Controller
             return redirect()->back()->withErrors($validator, 'user')->withInput();
         }
         $credentials    = $request->only('name', 'password');
-        $isLoginSuccess = Auth::attempt($credentials);
+        $isLoginSuccess = Auth::attempt($credentials, $request->remember);
         // dd($isLoginSuccess);
         if ($isLoginSuccess) {
             return redirect()->intended('/admin/');

@@ -15,6 +15,6 @@ class OrderDetail extends Model
     }
     public function drug()
     {
-    	return $this->belongsTo(Drug::class);
+    	return $this->belongsTo(Drug::class)->withTrashed();
     }
 }

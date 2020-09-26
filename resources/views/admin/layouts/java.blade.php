@@ -5,6 +5,7 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script>
 <script src="/colored/js/screenfull.js"></script>
         <script>
             var check = function() {
@@ -40,59 +41,33 @@
             $drugs = DB::table('drugs')->get();
             // dd($drugs);
         @endphp
-        var ctx = $('#myChart');
-        var myChart = new Chart(ctx, {
-            type: 'pie',
+
+        var chart = new Chartisan({
+            el: '#myChart',
             data: {
-                labels: [
-                    @foreach($drugs as $drug)
-                        '{{ $drug->name }}',
-                    @endforeach
-                ],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [
+                chart: {
+                    labels: [
                         @foreach($drugs as $drug)
-                            {{ $drug->stock }},
+                            '{{ $drug->name }}',
                         @endforeach
-                    ],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                    ]
                 },
-                // responsive: true,
-            }
-        });
+                datasets: [
+                    {
+                        name: '# of Votes',
+                        values: [
+                            @foreach($drugs as $drug)
+                                {{ $drug->stock }},
+                            @endforeach
+                        ],
+                    }
+                ]
+            },
+            hooks: new ChartisanHooks()
+                .datasets('pie')
+                .pieColors()
+        })
+
         </script>
 <script src="/colored/js/bootstrap.js"></script>
 <script src="/colored/js/proton.js"></script>
