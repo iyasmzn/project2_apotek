@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Model\Drug;
 use App\Model\Order;
+use App\Model\OrderDetail;
 
 class OrderController extends Controller
 {
@@ -113,5 +114,14 @@ class OrderController extends Controller
         $order->delete();
 
         return redirect(route('admin.orders.index'));
+    }
+    public function show($id)
+    {
+        $order = Order::with('order_details')->find($id);
+        $drugs = Drug::all();
+        $odetails = OrderDetail::with('drug')->where('order_id', $order->id)->get();
+        // dd($odetails->toArray());
+
+        return view('admin.orders.show', compact('order', 'drugs', 'odetails'));
     }
 }

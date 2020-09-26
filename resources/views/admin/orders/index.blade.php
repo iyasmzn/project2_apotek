@@ -40,18 +40,17 @@
 	            			<td>{{ Str::title($order->user->name) }}</td>
 	            			<td>{{ Str::title($order->customer_name) }}</td>
 	            			<td style="text-align: center;">Rp, {{ number_format("$order->total",2,",",".") }}</td>
-	            			@if(Auth::user()->role == 'admin' || Auth::user()->id == $order->user_id)
 	            			<td style="text-align: center;">
+            					<a href="{{ route('admin.orders.show', $order->id) }}"><i class="fa fa-eye"></i></a>
+	            			@if(Auth::user()->role == 'admin' || Auth::user()->id == $order->user_id)
             					<a href="{{ route('admin.orders.edit', $order->id) }}"><i class="fa fa-cogs"></i></a>
             					<form action="{{ route('admin.orders.destroy', $order->id) }}" method="post" style="display: inline-block;">
             						@csrf @method('DELETE')
 
 	            					<button style="color: red;font-size: 1.3em;background-color: white;border: none;"><i class="fa fa-trash-o" style="transform: translateY(-2px);"></i></button>	            						
             					</form>
-	            			@else
-	            				<p style="text-align: center;color: red">Can't edit other with this user</p>
-	            			</td> 
 	            			@endif
+	            			</td> 
             			</tr>
 	            		@endforeach
 	            	</tbody>
