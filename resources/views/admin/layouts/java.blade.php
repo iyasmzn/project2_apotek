@@ -19,7 +19,10 @@
               }
             }
         $(function () {
-    	    $('#myTable').DataTable();
+            $('#myTable').DataTable();
+    	    $('#latestOrder').DataTable({
+                paging: false,
+            });
             $('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
 
             if (!screenfull.enabled) {
@@ -38,27 +41,30 @@
 
         // ChartJS
         @php 
-            $drugs = DB::table('drugs')->get();
+            $drugsold = DB::table('drugs')->where('sold', '>', 0)->get();
+            $drugstock = DB::table('drugs')->get();
             // dd($drugs);
         @endphp
 
         var chart = new Chartisan({
-            el: '#myChart',
+            el: '#soldChart',
             data: {
                 chart: {
                     labels: [
-                        @foreach($drugs as $drug)
-                            '{{ $drug->name }}',
-                        @endforeach
+                        'Users',
+                        'Tags',
+                        'Drugs',
+                        'Orders',
                     ]
                 },
                 datasets: [
                     {
                         name: '# of Votes',
                         values: [
-                            @foreach($drugs as $drug)
-                                {{ $drug->stock }},
-                            @endforeach
+                            {{ count(DB::table('users')->get()) }},
+                            {{ count(DB::table('tags')->get()) }},
+                            {{ count(DB::table('drugs')->get()) }},
+                            {{ count(DB::table('orders')->get()) }},
                         ],
                     }
                 ]
@@ -66,6 +72,27 @@
             hooks: new ChartisanHooks()
                 .datasets('pie')
                 .pieColors()
+                .legend({ position: 'left' })
+        })
+        var chart = new Chartisan({
+            el: '#barChart',
+            data: {
+                chart: {
+                    labels: [
+                        @foreach($drugstock as $drug)
+                            '{{ $drug->name }}',
+                        @endforeach
+                    ]
+                },
+                datasets: [
+                    { name: 'Drug Stock', values: [ @foreach($drugstock as $drug) {{ $drug->stock }}, @endforeach ]},
+                    { name: 'Drug Sold', values: [ @foreach($drugsold as $drug) {{ $drug->stock }}, @endforeach ]},
+                ]
+            },
+            hooks: new ChartisanHooks()
+                .datasets('bar')
+                .colors()
+                .legend({ position: 'top' })
         })
 
         </script>

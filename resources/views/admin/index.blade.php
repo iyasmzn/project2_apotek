@@ -69,7 +69,48 @@
 		<div class="social grid">
 			<div class="grid-info">
 				<div class="col-md-12">
-					<div id="myChart" height="500"></div>											
+					<h3 style="color: gray;margin-bottom: 20px;">Drug Stock n Sold Charts</h3>
+					<div id="barChart"></div>	
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<div class="social grid col-md-12">
+			<div class="grid-info">
+				<div class="col-md-8">
+					<h3 style="color: gray;margin-bottom: 20px;">Latest Orders</h3>
+					<table id="latestOrder">
+						<thead>
+							<tr>
+								<th style="width: 20px">No</th>
+								<th style="text-align: left;">Date</th>
+								<th style="text-align: left;">Customer Name</th>
+								<th style="text-align: left;">Total</th>
+								<th style="text-align: center;">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							@php 
+								$no = 1;
+								$orders = DB::table('orders')->orderBy('created_at', 'desc')->paginate(7);
+							@endphp
+							@foreach($orders as $order)
+							<tr>
+								<td style="text-align: center;">{{ $no++ }}</td>
+								<td>{{ date( 'Y, F/dS', strtotime($order->created_at) ) }}</td>
+								<td>{{ $order->customer_name }}</td>
+								<td>Rp, {{ number_format("$order->total",2,",",".") }}</td>
+								<td style="text-align: center;">
+	            					<a href="{{ route('admin.orders.show', $order->id) }}"><i class="fa fa-eye"></i></a>
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-4" style="text-align: right;">
+					<h3 style="color: gray;margin-bottom: 20px;">Datas Charts</h3>
+					<div id="soldChart"></div>													
 				</div>
 				<div class="clearfix"> </div>
 			</div>
