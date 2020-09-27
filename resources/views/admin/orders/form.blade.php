@@ -83,6 +83,7 @@
 	        							<input type="number" name="total" x-model="total" readonly style="border: none;font-weight: bold;color: gray;font-size: 1.4em;text-align: center;display: none">
 	        							<input type="text" x-model="showtotal" placeholder="Rp. 0,00 " readonly style="padding: 5px;border: none;font-weight: bold;color: gray;font-size: 1.4em;text-align: center;">
 	        						</label><br><br><br>
+	        						<a href="{{route('admin.orders.index')}}" class="btn btn-md btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
 	        						<button class="btn btn-info">Submit <i class="fa fa-chevron-right"></i></button>
 
 	        					</div>

@@ -17,7 +17,9 @@
 	    
 	    <div class="blank">
 	        <div class="blank-page">
-	            <table id="myTable">
+				<a href="{{route('admin.users.index')}}" class="btn btn-md btn-danger" style="margin-bottom: 20px;"><i class="fa fa-arrow-left"></i> Back</a>
+
+	            <table id="myTable">	            	
 	            	<thead>
 	            		<tr>
 	            			<th style="width: 20px">No</th>

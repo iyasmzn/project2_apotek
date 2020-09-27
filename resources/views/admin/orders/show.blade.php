@@ -51,14 +51,14 @@
 		            </table>
 	        	</div>
 	        	<div style="text-align: right;margin-bottom: 40px;" class="col-md-12">
-	        		<b>Total</b> <br><div class="btn btn-md btn-success">Rp, {{ number_format("$order->total",2,",",".") }}</div>
+	        		<b>Total</b> <br><div class="btn btn-md btn-warning">Rp, {{ number_format("$order->total",2,",",".") }}</div>
 	        	</div>
 	        	<div class="col-md-6">
-	        		<a class="btn btn-md btn-info" href="{{ route('admin.orders.index') }}"><i class="fa fa-arrow-left"></i> Back</a>
+	        		<a class="btn btn-md btn-danger" href="{{ route('admin.orders.index') }}"><i class="fa fa-arrow-left"></i> Back</a>
 	        	</div>
 	        	@if(Auth::user()->role == 'admin' || $order->user_id == Auth::user()->id )
 	        	<div class="col-md-6" style="text-align: right;">
-					<a class="btn btn-md btn-danger" href="{{ route('admin.orders.edit', $order->id) }}"><i class="fa fa-pencil"></i> Edit This Order</a>
+					<a class="btn btn-md btn-success" href="{{ route('admin.orders.edit', $order->id) }}"><i class="fa fa-pencil"></i> Edit This Order</a>
 	        	</div>
 				@endif
 	        	<div class="clearfix"></div>

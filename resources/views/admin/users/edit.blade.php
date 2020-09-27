@@ -91,6 +91,7 @@
 	        						<input type="hidden" name="fromView" value="formView">
 	        					@endif
 	        					<div class="form-group" style="text-align: center;margin-top: 30px">
+									<a href="{{route('admin.users.index')}}" class="btn btn-md btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
 	        						<input type="submit" value="SUBMIT" class="btn btn-lg btn-success">
 	        					</div>
 	        				</form>

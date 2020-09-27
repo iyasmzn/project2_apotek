@@ -9,7 +9,7 @@
 	    
 	    <div class="banner">
 	        <h2>
-	            <a href="index.html">Home</a>
+	            <a href="{{ route('admin.drugs.index') }}">Drugs</a>
 	            <i class="fa fa-angle-right"></i>
 	            <span>Drugs List</span>
 	        </h2>
