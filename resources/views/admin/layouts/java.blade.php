@@ -41,8 +41,7 @@
 
         // ChartJS
         @php 
-            $drugsold = DB::table('drugs')->where('sold', '>', 0)->get();
-            $drugstock = DB::table('drugs')->get();
+            $drugs = DB::table('drugs')->orderBy('sold', 'desc')->paginate(5);
             // dd($drugs);
         @endphp
 
@@ -79,14 +78,14 @@
             data: {
                 chart: {
                     labels: [
-                        @foreach($drugstock as $drug)
+                        @foreach($drugs as $drug)
                             '{{ $drug->name }}',
                         @endforeach
                     ]
                 },
                 datasets: [
-                    { name: 'Drug Stock', values: [ @foreach($drugstock as $drug) {{ $drug->stock }}, @endforeach ]},
-                    { name: 'Drug Sold', values: [ @foreach($drugsold as $drug) {{ $drug->stock }}, @endforeach ]},
+                    { name: 'Drug Stock', values: [ @foreach($drugs as $drug) {{ $drug->stock }}, @endforeach ]},
+                    { name: 'Drug Sold', values: [ @foreach($drugs as $drug) {{ $drug->sold }}, @endforeach ]},
                 ]
             },
             hooks: new ChartisanHooks()
