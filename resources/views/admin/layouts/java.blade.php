@@ -45,34 +45,34 @@
             // dd($drugs);
         @endphp
 
-        var chart = new Chartisan({
-            el: '#soldChart',
-            data: {
-                chart: {
-                    labels: [
-                        'Users',
-                        'Tags',
-                        'Drugs',
-                        'Orders',
-                    ]
-                },
-                datasets: [
-                    {
-                        name: '# of Votes',
-                        values: [
-                            {{ count(DB::table('users')->get()) }},
-                            {{ count(DB::table('tags')->get()) }},
-                            {{ count(DB::table('drugs')->get()) }},
-                            {{ count(DB::table('orders')->get()) }},
-                        ],
-                    }
-                ]
-            },
-            hooks: new ChartisanHooks()
-                .datasets('pie')
-                .pieColors()
-                .legend({ position: 'left' })
-        })
+        // var chart = new Chartisan({
+        //     el: '#soldChart',
+        //     data: {
+        //         chart: {
+        //             labels: [
+        //                 'Users',
+        //                 'Tags',
+        //                 'Drugs',
+        //                 'Orders',
+        //             ]
+        //         },
+        //         datasets: [
+        //             {
+        //                 name: '# of Votes',
+        //                 values: [
+        //                     {{ count(DB::table('users')->get()) }},
+        //                     {{ count(DB::table('tags')->get()) }},
+        //                     {{ count(DB::table('drugs')->get()) }},
+        //                     {{ count(DB::table('orders')->get()) }},
+        //                 ],
+        //             }
+        //         ]
+        //     },
+        //     hooks: new ChartisanHooks()
+        //         .datasets('pie')
+        //         .pieColors()
+        //         .legend({ position: 'top' })
+        // })
         var chart = new Chartisan({
             el: '#barChart',
             data: {

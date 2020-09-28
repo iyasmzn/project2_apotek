@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('customer_name');
-            $table->integer('total')->nullable();
+            $table->integer('total')->default(0)->nullable();
             $table->timestamps();
         });
     }

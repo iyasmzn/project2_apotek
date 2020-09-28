@@ -70,14 +70,14 @@
 			<div class="grid-info">
 				<div class="col-md-12">
 					<h3 style="color: gray;margin-bottom: 20px;">Drug Stock n Sold Charts</h3>
-					<div id="barChart"></div>	
+					<div id="barChart" style="height: 400px"></div>	
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
 		<div class="social grid col-md-12">
 			<div class="grid-info">
-				<div class="col-md-8">
+				<div class="col-md-12">
 					<h3 style="color: gray;margin-bottom: 20px;">Latest Orders</h3>
 					<table id="latestOrder">
 						<thead>
@@ -108,10 +108,10 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="col-md-4" style="text-align: right;">
-					<h3 style="color: gray;margin-bottom: 20px;">Datas Charts</h3>
-					<div id="soldChart"></div>													
-				</div>
+				<!-- <div class="col-md-4" style="text-align: right;"> -->
+					<!-- <h3 style="color: gray;margin-bottom: 20px;">Datas Charts</h3> -->
+					<!-- <div id="soldChart" style="height: 400px"></div>													 -->
+				<!-- </div> -->
 				<div class="clearfix"> </div>
 			</div>
 		</div>
