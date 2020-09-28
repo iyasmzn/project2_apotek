@@ -41,7 +41,7 @@
 
         // ChartJS
         @php 
-            $drugs = DB::table('drugs')->orderBy('sold', 'desc')->paginate(5);
+            $drugs = DB::table('drugs')->orderBy('sold', 'desc')->paginate(10);
             // dd($drugs);
         @endphp
 
