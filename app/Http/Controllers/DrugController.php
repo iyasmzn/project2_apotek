@@ -19,6 +19,11 @@ class DrugController extends Controller
     	$drugs = $this->model::orderBy('created_at', 'desc')->get();
     	return view('admin.drugs.index', compact('drugs'));
     }
+    public function show($id)
+    {
+        $drug = $this->model::find($id);
+        return view('admin.drugs.show', compact('drug'));
+    }
     public function trash()
     {
         $drugs = $this->model->onlyTrashed()->get();

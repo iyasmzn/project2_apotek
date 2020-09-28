@@ -31,8 +31,8 @@
 	            	<thead>
 	            		<tr>
 	            			<th style="width: 20px">No</th>
-	            			<th style="text-align: left;">Code</th>
 	            			<th style="width: 100px">Image</th>
+	            			<th style="text-align: left;">Code</th>
 	            			<th style="text-align: left;">Name</th>
 	            			<th>Stock</th>
 	            			<th style="text-align: left;">Exp Date (Y, m/d)</th>
@@ -45,14 +45,15 @@
 
 	            			<tr>
 	            				<td>{{ $no++ }}</td>
-	            				<td>{{ $drug->drug_code }}</td>
 	            				<td>
 	            					<div style="width: 75px;height: 75px;border-radius: 50px;background-color: rgb(91,192,222);background-image: url('/img/drug_img/{{ $drug->image }}');background-size: cover;background-position: center;"></div>
 	            				</td>
+	            				<td>{{ $drug->drug_code }}</td>
 	            				<td>{{ $drug->name }}</td>
 	            				<td style="text-align: center;">{{ $drug->stock }}</td>
 	            				<td>{{ date('Y, m/d', strtotime($drug->exp_date)) }}</td>
 	            				<td style="text-align: center;">
+	            					<a href="{{ route('admin.drugs.show', $drug->id) }}"><i class="fa fa-eye"></i></a>
 	            					<a href="/admin/drugs/edit/{{ $drug->id }}"><i class="fa fa-cogs"></i></a>
 	            					<form action="/admin/drugs/delete/{{ $drug->id }}" method="post" style="display: inline-block;">
 	            						@csrf @method('DELETE')

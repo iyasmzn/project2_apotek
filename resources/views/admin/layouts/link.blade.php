@@ -1,3 +1,4 @@
+<link rel="icon" type="jpg/png" href="https://vmedis.com/wp-content/uploads/2018/03/Drugstore-icon-300x300.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Colored Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 

@@ -60,6 +60,7 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function ()
 		Route::get('/create', 'DrugController@create')->name('create');
 		Route::post('/store', 'DrugController@store')->name('store');
 		Route::get('/edit/{id}', 'DrugController@edit')->name('edit');
+		Route::get('/show/{id}', 'DrugController@show')->name('show');
         Route::put('/update/{id}', 'DrugController@update')->name('update');
         Route::delete('/delete/{id}', 'DrugController@delete')->name('delete');
 		Route::get('/trash', 'DrugController@trash')->name('trash');
