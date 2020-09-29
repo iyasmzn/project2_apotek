@@ -43,36 +43,51 @@
 		        						</label>
 	        						</div>
 	        						<br><br>
-	        						<template x-for="(row, index) in rows" :key="row">
-	        							<div style="margin: 20px 0px;">
-	        								<label style="color: darkgrey;margin-right: 20px">
-	        									Drugs
-	        									<select class="drug-select" :class=" 'drug' + index " name="drug_id[]" x-model="row.drug_id" x-on:change="setPrice(row.drug_id, index)"  style="padding: 5px;display: none;">
 
-	        										<option>~ Choose Drug Item ~</option>
-	        										@foreach ($drugs as $drug)
-	        										<option value="{{ $drug->id }}">{{ $drug->name }}</option>
-	        										@endforeach
-	        									</select>
-	        									<!-- <span x-text="row.drug_id"></span> -->
-	        								</label>
-	        								<label style="color: darkgrey;margin-right: 20px">
-	        									Qty
-	        									<input :class=" 'qty' + index " type="number" name="qty[]" x-model="row.qty" value="" x-on:change="setSubtotal(index)" min="0" style="padding: 5px;width: 70px;color: black">
-	        								</label>
-	        								<label style="color: darkgrey;margin-right: 20px">
-	        									Price
-	        									<input type="number" name="price[]" x-model="row.price" value="" readonly style="width: 140px;padding: 5px;display: none;">
-	        									<input class="rupiah" type="text" x-model="{{ $isEdit ? 'row.price' : 'row.showprice' }}" value="" placeholder="Rp. 0,00 /pcs" readonly style="width: 140px;padding: 5px;border: none;border-bottom: 1px solid gray;color: black"> {{ $isEdit ? '/pcs' : '' }}
-	        								</label>
-	        								<label style="color: darkgrey;margin-right: 20px">
-	        									Subtotal
-	        									<input type="number" name="subtotal[]" x-model="row.subtotal" value="" readonly style="display: none;">
-	        									<input class="rupiahsub" type="text" x-model="{{ $isEdit ? 'row.subtotal' : 'row.showsubtotal' }}" value="" placeholder="Rp. 0,00 " readonly style="width: 140px;padding: 5px;border: none;border-bottom: 1px solid gray;color: black"> 
-	        								</label>
-			        						<button type="button" x-on:click="removeRow(index)" class="btn btn-md btn-danger"><i class="fa fa-trash-o"></i></button>
-	        							</div>
-	        						</template>
+	        						<table style="width: 70%">
+	        							<thead>
+	        								<tr style="border-bottom: 1px solid gray">
+	        									<th style="text-align: left;padding-bottom: 20px">Drug</th>
+	        									<th style="text-align: left;">Price</th>
+	        									<th>Qty</th>
+	        									<th>Subtotal</th>
+	        									<th>Del</th>
+	        								</tr>
+	        							</thead>
+	        							<tbody>
+			        						<template x-for="(row, index) in rows" :key="row">
+			        							<!-- <div style="margin: 20px 0px;"> -->
+			        								<tr>
+			        									<td style="padding: 10px 0px">
+				        									<select class="drug-select" :class=" 'drug' + index " name="drug_id[]" x-model="row.drug_id" x-on:change="setPrice(row.drug_id, index)"  style="padding: 5px;display: none;">
+
+				        										<option>~ Choose Drug Item ~</option>
+				        										@foreach ($drugs as $drug)
+				        										<option value="{{ $drug->id }}">{{ $drug->name }}</option>
+				        										@endforeach
+				        									</select>
+			        									</td>
+			        									<td style="">
+			        										<input type="number" name="price[]" x-model="row.price" value="" readonly style="width: 140px;padding: 5px;display: none;">
+				        									<input class="rupiah" type="text" x-model="{{ $isEdit ? 'row.price' : 'row.showprice' }}" value="" placeholder="Rp. 0,00 /pcs" readonly style="width: 140px;padding: 5px;border: none;border-bottom: 1px solid gray;color: black"> {{ $isEdit ? '/pcs' : '' }}
+			        									</td>
+			        									<td style="text-align: center;">
+			        										<input :class=" 'qty' + index " type="number" name="qty[]" x-model="row.qty" value="" x-on:change="setSubtotal(index)" min="0" style="padding: 5px;width: 70px;color: black">
+			        									</td>
+			        									<td style="text-align: center;">
+			        										<input type="number" name="subtotal[]" x-model="row.subtotal" value="" readonly style="display: none;">
+				        									<input class="rupiahsub" type="text" x-model="{{ $isEdit ? 'row.subtotal' : 'row.showsubtotal' }}" value="" placeholder="Rp. 0,00 " readonly style="width: 140px;padding: 5px;border: none;border-bottom: 1px solid gray;color: black"> 
+			        									</td>
+			        									<td style="text-align: center;">
+			        										<button type="button" x-on:click="removeRow(index)" class="btn btn-md btn-danger"><i class="fa fa-trash-o"></i></button>
+			        									</td>
+			        								</tr>
+						        						
+			        							<!-- </div> -->
+			        						</template>
+	        							</tbody>
+	        						</table>
+
 
 	        						<br>
 	        						<button class="btn btn-sm btn-success" type="button" x-on:click="addRow"><i class="fa fa-plus" style="padding-right: 5px;"></i>Add More Item</button>
