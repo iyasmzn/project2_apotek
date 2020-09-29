@@ -87,8 +87,8 @@ class DrugPolicy
      * @param  \App\Drug  $drug
      * @return mixed
      */
-    public function forceDelete(User $user, Drug $drug)
+    public function forceDelete(User $user)
     {
-        //
+        return $user->role == 'admin';
     }
 }

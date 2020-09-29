@@ -26,6 +26,7 @@ class DrugController extends Controller
     }
     public function trash()
     {
+        $this->authorize('forceDelete', $this->model);
         $drugs = $this->model->onlyTrashed()->get();
         return view('admin.drugs.trash', compact('drugs'));
     }
@@ -114,6 +115,7 @@ class DrugController extends Controller
     }
     public function delete($id)
     {
+        $this->authorize('forceDelete', $this->model);
         $model = $this->model->find($id);
         $this->removeImage($model->image);
         $model->delete();
@@ -122,6 +124,7 @@ class DrugController extends Controller
     }
     public function restore($id)
     {
+        $this->authorize('forceDelete', $this->model);
         $this->model->onlyTrashed()->find($id)->restore();
         return redirect()->back();
     }
