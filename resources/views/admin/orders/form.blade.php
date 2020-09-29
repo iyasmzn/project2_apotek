@@ -51,7 +51,7 @@
 	        									<th style="text-align: left;">Price</th>
 	        									<th>Qty</th>
 	        									<th>Subtotal</th>
-	        									<th>Del</th>
+	        									<!-- <th>Del</th> -->
 	        								</tr>
 	        							</thead>
 	        							<tbody>
@@ -78,9 +78,9 @@
 			        										<input type="number" name="subtotal[]" x-model="row.subtotal" value="" readonly style="display: none;">
 				        									<input class="rupiahsub" type="text" x-model="{{ $isEdit ? 'row.subtotal' : 'row.showsubtotal' }}" value="" placeholder="Rp. 0,00 " readonly style="width: 140px;padding: 5px;border: none;border-bottom: 1px solid gray;color: black"> 
 			        									</td>
-			        									<td style="text-align: center;">
+			        									<!-- <td style="text-align: center;">
 			        										<button type="button" x-on:click="removeRow(index)" class="btn btn-md btn-danger"><i class="fa fa-trash-o"></i></button>
-			        									</td>
+			        									</td> -->
 			        								</tr>
 						        						
 			        							<!-- </div> -->
@@ -90,16 +90,24 @@
 
 
 	        						<br>
-	        						<button class="btn btn-sm btn-success" type="button" x-on:click="addRow"><i class="fa fa-plus" style="padding-right: 5px;"></i>Add More Item</button>
-
-	        						<br>
-	        						<label style="margin-top: 20px;border: 1px solid lightgray;text-align: center;padding: 7px 15px;">
-	        							<span style="border-bottom: 2px solid tomato;color: tomato;font-weight: bold;">Total Value</span> <br>
-	        							<input type="number" name="total" x-model="total" readonly style="border: none;font-weight: bold;color: gray;font-size: 1.4em;text-align: center;display: none">
-	        							<input type="text" x-model="showtotal" placeholder="Rp. 0,00 " readonly style="padding: 5px;border: none;font-weight: bold;color: gray;font-size: 1.4em;text-align: center;">
-	        						</label><br><br><br>
-	        						<a href="{{route('admin.orders.index')}}" class="btn btn-md btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
-	        						<button class="btn btn-info">Submit <i class="fa fa-chevron-right"></i></button>
+	        						<div style="width: 70%;text-align: center;display: flex;justify-content: space-between;">
+		        						<div>
+		        							<button class="btn btn-md btn-success" type="button" x-on:click="addRow"><i class="fa fa-plus" style="padding-right: 5px;"></i></button>
+											<button type="button" x-on:click="removeRow()" class="btn btn-md btn-danger"><i class="fa fa-trash-o"></i></button>
+		        						</div>
+		        						<div>
+			        						<label style="margin-top: 20px;border: 1px solid lightgray;text-align: center;padding: 7px 15px;">
+			        							<span style="border-bottom: 2px solid tomato;color: tomato;font-weight: bold;">Total Value</span> <br>
+			        							<input type="number" name="total" x-model="total" readonly style="border: none;font-weight: bold;color: gray;font-size: 1.4em;text-align: center;display: none">
+			        							<input type="text" x-model="showtotal" placeholder="Rp. 0,00 " readonly style="padding: 5px;border: none;font-weight: bold;color: gray;font-size: 1.4em;text-align: center;">
+			        						</label>
+		        						</div>
+	        						</div>
+	        						<div style="display: flex;justify-content: space-between;">
+		        						<a href="{{route('admin.orders.index')}}" class="btn btn-md btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
+		        						<button class="btn btn-info">Order <i class="fa fa-chevron-right"></i></button>
+	        							
+	        						</div>
 
 	        					</div>
 
@@ -158,8 +166,9 @@
 					this.rows.push( Object.assign( {}, initialRow ) );
 					this.$nextTick( () => { this.drugSelect() } );
 				},
-				removeRow(index) {
-					this.rows.splice(index, 1);
+				removeRow() {
+					// this.rows.splice(index, 1);
+					this.rows.pop();
 					this.setTotal();
 				},
 				setPrice(id, index) {
