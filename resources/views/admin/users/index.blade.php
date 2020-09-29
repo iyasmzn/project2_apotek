@@ -77,7 +77,7 @@
 		            				</td>
 		            			@else
 		            				<td style="text-align: center;color: red">
-		            					Can't edit other with this user
+		            					<a href="/admin/users/view/{{ $user->id }}"><i class="fa fa-eye"></i></a>
 		            				</td> 
 	            				@endif
 

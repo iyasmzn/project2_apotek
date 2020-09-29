@@ -16,11 +16,13 @@ class UserController extends Controller
     }
     public function index()
     {
+        $this->authorize('viewAny', $this->model);
     	$users = $this->model->all();
     	return view('admin.users.index', compact('users'));
     }
     public function trash()
     {
+        $this->authorize('restore', $this->model);
         $users = $this->model->onlyTrashed()->get();
         return view('admin.users.trash', compact('users'));
     }
@@ -31,10 +33,12 @@ class UserController extends Controller
     }
     public function create()
     {
+        $this->authorize('create', $this->model);
     	return view('admin.users.create');
     }
     public function store(Request $request)
     {
+        $this->authorize('create', $this->model);
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:users',
@@ -57,13 +61,22 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-        // $this->authorize('update', $this->model);
+        if (Auth::id() == $id || Auth::user()->role == 'admin') {
+            $this->authorize('viewAny', $this->model);
+        } else {            
+            $this->authorize('update', $this->model);
+        }
         $user = $this->model->find($id);
         return view(('admin.users.edit'), compact('user'));
     }
     public function edit2($id, $fromView)
     {
-        // $this->authorize('update', $this->model);
+        if (Auth::id() == $id || Auth::user()->role == 'admin') {
+            $this->authorize('viewAny', $this->model);
+        } else {            
+            $this->authorize('update', $this->model);
+        }
+        $this->authorize('update', $this->model);
         $user = $this->model->find($id);
         return view(('admin.users.edit'), compact('user'))->with($fromView, 'fromView');
     }
@@ -103,7 +116,7 @@ class UserController extends Controller
     }
     public function delete($id)
     {
-        // $this->authorize('delete', $this->model);
+        $this->authorize('delete', $this->model);
         $model = $this->model->find($id);
         $this->removeImage($model->photo);
         $model->delete();
@@ -129,11 +142,13 @@ class UserController extends Controller
     }
     public function restore($id)
     {
+        $this->authorize('restore', $this->model);
         $this->model->onlyTrashed()->find($id)->restore();
         return redirect()->back();
     }
     public function forceDelete($id)
     {
+        $this->authorize('forceDelete', $this->model);
         $this->model->onlyTrashed()->find($id)->forceDelete();
         return redirect()->back();
     }

@@ -16,7 +16,7 @@ class OrderSeeder extends Seeder
         $fake = Faker\Factory::create('id_ID');
         Order::truncate();
         $users_tot = count(DB::table('users')->get());
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 20; $i++) { 
         	Order::create([
         		'user_id' => rand(1, $users_tot),
         		'customer_name' => $fake->name(),

@@ -6,7 +6,7 @@
 
 @extends('admin.layouts.app')
 
-@section('title', 'Make Order')
+@section('title', $isEdit ? 'Edit Order' : 'Make Order')
 
 @section('content')
 	

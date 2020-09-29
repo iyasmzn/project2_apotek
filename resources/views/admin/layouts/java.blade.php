@@ -8,6 +8,9 @@
 <script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script>
 <script src="/colored/js/screenfull.js"></script>
         <script>
+            function returnBack() {
+                window.history.back();
+            }
             var check = function() {
               if (document.getElementById('password').value ==
                 document.getElementById('confirm_password').value) {

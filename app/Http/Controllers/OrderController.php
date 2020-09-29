@@ -8,21 +8,25 @@ use Illuminate\Support\Facades\DB;
 use App\Model\Drug;
 use App\Model\Order;
 use App\Model\OrderDetail;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
     public function index()
     {
+        $this->authorize('viewAny', Order::class);
     	$orders = Order::orderBy('created_at', 'desc')->get();
     	return view('admin.orders.index', compact('orders'));
     }
     public function create()
     {
+        $this->authorize('viewAny', Order::class);
     	$drugs = Drug::where('stock', '>' ,'0')->get();
     	return view('admin.orders.form', compact('drugs'));
     }
     public function store(Request $request)
     {
+        $this->authorize('viewAny', Order::class);
     	// dd($request->qty);
         // Order::create($request->only('customer_name'));
 
@@ -61,6 +65,12 @@ class OrderController extends Controller
     public function edit($id)
     {
         $order = Order::with('order_details')->find($id);
+        // dd($order->user_id);
+        if (Auth::id() == $order->user_id || Auth::user()->role == 'admin') {
+            $this->authorize('viewAny', Order::class);
+        } else {            
+            $this->authorize('forceDelete', Order::class);
+        }
         $drugs = Drug::all();
         // dd($order->toArray());
 
@@ -69,6 +79,11 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         $order = Order::find($id);
+        if (Auth::id() == $order->user_id || Auth::user()->role == 'admin') {
+            $this->authorize('viewAny', Order::class);
+        } else {            
+            $this->authorize('forceDelete', Order::class);
+        }
         $oodd = DB::table('order_details')->where('order_id', $id)->get();
         // dd($oodd[0]->qty);
         foreach ($oodd as $orderer) {
@@ -108,8 +123,12 @@ class OrderController extends Controller
     }
     public function destroy($id)
     {
-        
         $order = Order::findOrFail($id);
+        if (Auth::id() == $order->user_id || Auth::user()->role == 'admin') {
+            $this->authorize('viewAny', Order::class);
+        } else {            
+            $this->authorize('forceDelete', Order::class);
+        }
         $order->order_details()->delete();
         $order->delete();
 
@@ -117,6 +136,7 @@ class OrderController extends Controller
     }
     public function show($id)
     {
+        $this->authorize('viewAny', Order::class);
         $order = Order::with('order_details')->find($id);
         $drugs = Drug::all();
         $odetails = OrderDetail::with('drug')->where('order_id', $order->id)->get();

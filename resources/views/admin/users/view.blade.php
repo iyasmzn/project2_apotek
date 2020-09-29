@@ -61,24 +61,30 @@
 	        			<tr>
 	        				<td><span style="color: gray;font-size: 1em;padding-right: 20px;">Age</span></td>
 	        				<td>
-				        		<h3 style="margin: 5px 0px;color: rgb(0,188,212)">{{ set_age($user->born_date) }} </h3>
+				        		<h3 style="margin: 5px 0px;color: rgb(0,188,212)">{{ $user->born_date ? set_age($user->born_date) : '-' }} </h3>
 	        				</td>
 	        			</tr>
 	        			<tr>
 	        				<td><span style="color: gray;font-size: 1em;padding-right: 20px;">Role</span></td>
 	        				<td>
-				        		<h1 style="margin: 5px 0px;color: rgb(0,188,212)"><span class="btn btn-info">{{ $user->role }}</span></h1>
+				        		<h1 style="margin: 5px 0px;color: rgb(0,188,212)"><span class="btn btn-warning">{{ $user->role }}</span></h1>
 	        				</td>
 	        			</tr>
 	        			<tr>
 	        				<td><span style="color: gray;font-size: 1em;padding-right: 20px;">Address</span></td>
 	        				<td>
-				        		<h3 style="margin: 5px 0px;color: rgb(0,188,212)">{{ $user->address }}</h3>
+				        		<h3 style="margin: 5px 0px;color: rgb(0,188,212)">{{ $user->address ? $user->address : '-' }}</h3>
 	        				</td>
 	        			</tr>
 	        		</table>
 
-	        		<a href="/admin/users/edit/{{ $user->id }}/fromView" class="btn btn-danger">Edit Profile</a>
+		        	<div style="margin-top: 50px;">
+			        	<div class="btn btn-md btn-info" onclick="returnBack()"><i class="fa fa-arrow-left"></i> Back</div>
+			        	@if(Auth::user()->role == 'admin' || Auth::user()->id == $user->id )
+		        		<a href="/admin/users/edit/{{ $user->id }}/fromView" class="btn btn-danger">Edit Profile</a>
+		        		@endif
+		        	</div>
+
 	        	</div>
 	        </div>
 	   </div>
