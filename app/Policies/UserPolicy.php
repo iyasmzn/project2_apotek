@@ -15,7 +15,7 @@ class UserPolicy
      * @param  \App\Model\User  $user
      * @return mixed
      */
-    public function viewAny(User $user)
+    public function viewAny()
     {
         return true;
     }
@@ -46,7 +46,7 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function update(User $user)
+    public function update()
     {
         return false;
     }

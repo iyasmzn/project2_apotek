@@ -13,12 +13,13 @@ class UserController extends Controller
     {
         $this->model = new User();
         $this->imagePath = public_path('img/profile_img');
+        $this->index = 'admin.users.index';
     }
     public function index()
     {
         $this->authorize('viewAny', $this->model);
     	$users = $this->model->all();
-    	return view('admin.users.index', compact('users'));
+    	return view($this->index, compact('users'));
     }
     public function trash()
     {
@@ -110,9 +111,8 @@ class UserController extends Controller
         if (isset($request->fromView)) {
             $user = $model;
             return redirect(route('admin.users.view', $user->id));
-            // return view('admin.users.view', compact('user'));
         }
-        return redirect(route('admin.users.index'));
+        return redirect(route($this->index));
     }
     public function delete($id)
     {
@@ -121,7 +121,7 @@ class UserController extends Controller
         $this->removeImage($model->photo);
         $model->delete();
 
-        return redirect(route('admin.users.index'));
+        return redirect(route($this->index));
     }
     public function uploadImage($request)
     {
